@@ -12,7 +12,7 @@
   },
   "content_scripts": [
     {
-      "matches": [ "*://*.ivelt.com/*" ],
+      "matches": [ "*.ivelt.com/*","*.yiddishworld.com/*","*.198.153.76.147/*" ],
       "js": [ "contentScript.js" ]
     }
   ],
