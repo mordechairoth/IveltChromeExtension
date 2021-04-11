@@ -1,0 +1,22 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 2,
+
+  "name": "ivelt keyboard shortcuts",
+  "description": "enabe to go forward or backward in ivelt forums by pressing the right and left buttons, and other accessibility features for ivelt",
+  "version": "1.4",
+  "icons": {
+    "48": "images/ivelt-icon-57x57.png",
+    "120": "images/ivelt-icon-120x120.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "*://www.ivelt.com/*" ],
+      "js": [ "contentScript.js" ]
+    }
+  ],
+  "web_accessible_resources": [ "iveltPreviousNext.js", "removeNestedQuotes.js", "addQuoteLastOnlyButton.js"]
+
+  
+}

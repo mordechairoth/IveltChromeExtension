@@ -1,0 +1,20 @@
+var s = document.createElement('script');
+s.src = chrome.extension.getURL('iveltPreviousNext.js');
+(document.head || document.documentElement).appendChild(s);
+s.onload = function () {
+    s.parentNode.removeChild(s);
+};
+
+var u = document.createElement('script');
+u.src = chrome.extension.getURL('addQuoteLastOnlyButton.js');
+(document.head || document.documentElement).appendChild(u);
+u.onload = function () {
+    u.parentNode.removeChild(u);
+}
+
+var t = document.createElement('script');
+t.src = chrome.extension.getURL('removeNestedQuotes.js');
+(document.head || document.documentElement).appendChild(t);
+t.onload = function () {
+    t.parentNode.removeChild(t);
+}
