@@ -12,7 +12,7 @@
   },
   "content_scripts": [
     {
-      "matches": [ "*://www.ivelt.com/*" ],
+      "matches": [ "*://*.ivelt.com/*" ],
       "js": [ "contentScript.js" ]
     }
   ],
