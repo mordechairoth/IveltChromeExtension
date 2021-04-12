@@ -23,7 +23,7 @@ function removeNestedQuotes(text){
 }
 
 let messageArea = document.querySelector('#message');
-let text = messageArea.innerHTML;
+let text = messageArea?.innerHTML??"";
 let onlyLastQuote = window.location.href.includes('last=true');
 
 if(hasNestedQuotes(text) && onlyLastQuote){
