@@ -26,7 +26,7 @@ let messageArea = document.querySelector('#message');
 let text = messageArea?.innerHTML??"";
 let onlyLastQuote = window.location.href.includes('last=true');
 
-if(hasNestedQuotes(text) && onlyLastQuote){
+if(messageArea && onlyLastQuote && hasNestedQuotes(text)){
     text = removeNestedQuotes(text);
     messageArea.innerHTML = text;
 }
