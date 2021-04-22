@@ -16,7 +16,7 @@
       "js": [ "contentScript.js" ]
     }
   ],
-  "web_accessible_resources": [ "iveltPreviousNext.js", "removeNestedQuotes.js", "addQuoteLastOnlyButton.js"]
+  "web_accessible_resources": [ "iveltPreviousNext.js", "removeNestedQuotes.js", "addQuoteLastOnlyButton.js","newResponseNotification.js"]
 
   
 }
