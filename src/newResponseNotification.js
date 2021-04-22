@@ -1,4 +1,4 @@
-//check if new post
+function newResponseNotification(){
 let params = new URLSearchParams(window.location.search);
 let forum = params.get('t');
 let current_count = document.querySelector(".pagination").innerText;
@@ -24,3 +24,4 @@ $.ajax({
         }
     });
 },100000)
+}
