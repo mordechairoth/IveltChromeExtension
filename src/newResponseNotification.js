@@ -6,13 +6,11 @@ function isLastPage() {
 let url = window.location.href;
 var check_new_response = setInterval(function () {
 	if (isLastPage()) {
-		var tmp = document.cookie;
-		document.cookie = "";
-		$.ajax({
+		$.ajax({ 
 			type: "GET",
 			url: url,
 			success: function (data) {
-				var new_count = (data.match(/class="post /g) || []).length;
+				var new_count = (data.match(/class="post |<li class="next">/g) || []).length;
 				if (parseInt(current_count) < parseInt(new_count)) {
 					console.log("check new posts");
 					document.body.innerHTML +=
@@ -21,6 +19,5 @@ var check_new_response = setInterval(function () {
 				}
 			},
 		});
-		document.cookie = tmp;
 	}
 }, 20000);
