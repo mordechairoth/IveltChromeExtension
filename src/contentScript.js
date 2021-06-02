@@ -18,3 +18,10 @@ t.src = chrome.extension.getURL('removeNestedQuotes.js');
 t.onload = function () {
     t.parentNode.removeChild(t);
 }
+
+var n = document.createElement('script');
+n.src = chrome.extension.getURL('newResponseNotification.js');
+(document.head || document.documentElement).appendChild(n);
+n.onload = function () {
+    n.parentNode.removeChild(n);
+}
