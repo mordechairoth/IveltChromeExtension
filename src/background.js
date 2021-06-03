@@ -1,13 +1,15 @@
 const notificationUrl = "http://www.ivelt.com/forum/ucp.php?i=ucp_notifications";
-let newNotificationCount = 0;
 
 let checkNewNotification = function() {
     fetch(notificationUrl)
     .then(response => response.text())
     .then(data => {
         let newCount = (data.match(/class="row bg3"/g) || []).length;
-        if (newNotificationCount !== newCount) {
+        if (newCount > 0) {
             chrome.browserAction.setBadgeText({text: newCount > 49 ? "49+" : newCount.toString()});
+        }
+        else{
+            chrome.browserAction.setBadgeText({text: ''});
         }
     });
 }
