@@ -21,7 +21,7 @@
         }
     ],
     "web_accessible_resources": [
-        "iveltPreviousNext.js",
+        "keyboardShortcuts.js",
         "removeNestedQuotes.js",
         "addQuoteLastOnlyButton.js",
         "newResponseNotification.js"
