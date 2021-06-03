@@ -6,13 +6,20 @@ function nextPage() {
     document.querySelectorAll(".next a")[0].click();
 }
 
+function sendPost() {
+    document.getElementsByName("post")[0].click();
+}
+
 function checkKey(e) {
 
-    if (e.target.nodeName == "INPUT" || e.target.nodeName == "TEXTAREA") return;
-    if (e.target.isContentEditable) return;
+    if (e.keyCode == '13' && e.ctrlKey) {
+        sendPost(); 
+    }
 
     e = e || window.event;
 
+    if (e.target.nodeName == "INPUT" || e.target.nodeName == "TEXTAREA") return;
+    if (e.target.isContentEditable) return;
 
     if (e.keyCode == '37') {
 
@@ -27,4 +34,5 @@ function checkKey(e) {
 
 }
 
+document.getElementsByName("post")[0].setAttribute('title', 'שיק תגובה (שארטקאט קאנטראל+ענטער)')
 document.onkeydown = checkKey;
