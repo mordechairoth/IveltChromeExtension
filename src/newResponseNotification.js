@@ -7,7 +7,7 @@ function isLastPage() {
 
 let url = window.location.href;
 let checkNewResponse = setInterval(function () {
-	if (isLastPage()) {
+	if (isLastPage() && currentCount > 0) {
 		$.ajax({
 			type: "GET",
 			url: url,
