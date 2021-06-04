@@ -1,6 +1,5 @@
 let checkNewNotification = function() {
     let newCount = (notificationNode.innerHTML.match(/\d+/) || [])[0]
-    console.log(newCount);
     if (newCount !== '0') {
         chrome.runtime.sendMessage({text: newCount});
     }
