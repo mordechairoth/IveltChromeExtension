@@ -16,7 +16,8 @@
                 "*://*.198.153.76.147/*"
             ],
             "js": [
-                "contentScript.js"
+                "contentScript.js",
+                "refreshNotificationCount.js"
             ]
         }
     ],
