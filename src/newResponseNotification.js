@@ -23,7 +23,7 @@ let checkNewResponse = setInterval(function () {
                         </h3>`)
 
 					let markUnreadUrls = (data.match(/\/forum\/app\.php\/markpostunread\/\d+\/\d+/g) || []);
-                    if(markUnreadUrls.length >= currentCount)
+                    if(markUnreadUrls.length > currentCount)
 					    fetch(markUnreadUrls[currentCount]);
                     
 					clearInterval(checkNewResponse);
