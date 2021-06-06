@@ -9,8 +9,10 @@ let checkNewNotification = function() {
 }
 
 const notificationNode = document.getElementById('notification_list_button');
-const config = { characterData : true, childList: true, subtree: true };
-const observer = new MutationObserver(checkNewNotification);
-observer.observe(notificationNode, config);
+if(notificationNode){
+    const config = { characterData : true, childList: true, subtree: true };
+    const observer = new MutationObserver(checkNewNotification);
+    observer.observe(notificationNode, config);
 
-checkNewNotification();
+    checkNewNotification();
+}

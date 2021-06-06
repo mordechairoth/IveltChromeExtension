@@ -4,7 +4,7 @@ let checkNewNotification = function() {
     fetch(notificationUrl)
     .then(response => response.text())
     .then(data => {
-        let matches = (data.match(/id="notification_list_button" class="dropdown-trigger"><span>נאטעפיקאציעס \[<\/span><strong>(\d{1,4})/) || []);
+        let matches = (data.match(/id="notification_list_button"\D*(\d{1,4})/) || []);
         let newCount = matches.length == 2 ? matches[1] : '0'
         if (newCount !== '0') {
             chrome.browserAction.setBadgeText({text: newCount});
