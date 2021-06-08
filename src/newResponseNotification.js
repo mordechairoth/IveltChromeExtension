@@ -19,7 +19,7 @@ let checkNewResponse = setInterval(function () {
                         `<h3 style="margin: auto;text-align: center;">
                             נייע תגובה איז יעצט אריינגעקומען
                             <br>
-                            <a class="button" onclick="window.location.reload();">איבערלאדן</a>
+                            <a class="button" onclick="window.location.reload();">רילאוד</a>
                         </h3>`)
 
 					let markUnreadUrls = (data.match(/\/forum\/app\.php\/markpostunread\/\d+\/\d+/g) || []);
@@ -32,7 +32,7 @@ let checkNewResponse = setInterval(function () {
                         `<h3 style="margin: auto;text-align: center;">
                             פרישע בלאט איז יעצט צוגעקומען
                             <br>
-                            <a class="button" ${(data.match(/href=".*" rel="next"/g) || [])[0]}>גיי צו פרישע בלאט</a>
+                            <a class="button" ${(data.match(/href=".*" rel="next"/g) || [])[0]}>גיי צום קומענדיגן בלאט</a>
                         </h3>`)
 	                clearInterval(checkNewResponse);
                 }
