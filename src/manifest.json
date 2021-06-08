@@ -5,8 +5,8 @@
     "description": "enabe to go forward or backward in ivelt forums by pressing the right and left buttons, and other accessibility features for ivelt",
     "version": "1.5",
     "icons": {
-        "48": "images/ivelt-icon-57x57.png",
-        "120": "images/ivelt-icon-120x120.png"
+        "48": "images/ivelt-logo-48x48.png",
+        "128": "images/ivelt-logo-128x128.png"
     },
     "content_scripts": [
         {
