@@ -2,7 +2,7 @@ const notificationUrl =
   "http://www.ivelt.com/forum/ucp.php?i=ucp_notifications";
 
 let checkNewNotification = function () {
-  fetch(notificationUrl)
+  fetch(notificationUrl, { mode: "no-cors" })
     .then((response) => response.text())
     .then((data) => {
       let matches =
