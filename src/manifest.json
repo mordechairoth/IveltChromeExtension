@@ -33,5 +33,9 @@
         "removeNestedQuotes.js",
         "addQuoteLastOnlyButton.js",
         "newResponseNotification.js"
+    ],
+    "host_permissions": [
+      "http://*.ivelt.com/",
+      "https://*.ivelt.com/"
     ]
 }
