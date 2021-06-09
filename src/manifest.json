@@ -1,13 +1,13 @@
 {
-    "update_url": "https://clients2.google.com/service/update2/crx",
-    "manifest_version": 2,
-    "name": "iVelt Forum Helper",
-    "description": "Adds accessibility features, and other usability improvements to the אייוועלט forums.",
-    "version": "1.6",
-    "icons": {
-        "48": "images/ivelt-logo-48x48.png",
-        "128": "images/ivelt-logo-128x128.png"
-    },
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "manifest_version": 2,
+  "name": "ivelt keyboard shortcuts",
+  "description": "enabe to go forward or backward in ivelt forums by pressing the right and left buttons, and other accessibility features for ivelt",
+  "version": "1.6",
+  "icons": {
+    "48": "images/ivelt-logo-48x48.png",
+    "128": "images/ivelt-logo-128x128.png"
+  },
   "content_scripts": [
     {
       "matches": [
