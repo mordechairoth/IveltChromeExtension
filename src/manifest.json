@@ -2,7 +2,7 @@
     "update_url": "https://clients2.google.com/service/update2/crx",
     "manifest_version": 2,
     "name": "iVelt Forum Helper",
-    "description": "Add Acessiblilty features, and other usability improvements to the iVelt Forums.",
+    "description": "Adds accessibility features, and other usability improvements to the אייוועלט forums.",
     "version": "1.6",
     "icons": {
         "48": "images/ivelt-logo-48x48.png",
