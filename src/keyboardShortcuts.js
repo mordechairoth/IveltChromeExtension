@@ -22,7 +22,7 @@ function checkKey(e) {
         sendPost(); 
     }
 
-    if (e.key == 'v' && e.altKey) {
+    if (e.code == 'KeyV' && e.altKey) {
         previewPost(); 
     }
 
