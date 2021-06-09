@@ -1,3 +1,5 @@
+
+
 function previousPage() {
     document.querySelectorAll(".previous a")[0].click();
 }
@@ -10,10 +12,18 @@ function sendPost() {
     document.getElementsByName("post")[0].click();
 }
 
+function previewPost() {
+    document.getElementsByName("preview")[0].click();
+}
+
 function checkKey(e) {
 
-    if (e.keyCode == '13' && e.ctrlKey) {
+    if (e.key == 'Enter' && e.ctrlKey) {
         sendPost(); 
+    }
+
+    if (e.key == 'v' && e.altKey) {
+        previewPost(); 
     }
 
     e = e || window.event;
@@ -21,12 +31,12 @@ function checkKey(e) {
     if (e.target.nodeName == "INPUT" || e.target.nodeName == "TEXTAREA") return;
     if (e.target.isContentEditable) return;
 
-    if (e.keyCode == '37') {
+    if (e.key == 'ArrowLeft') {
 
         try { nextPage(); } catch{ console.log('attempted to go after last page'); }
 
     }
-    else if (e.keyCode == '39') {
+    else if (e.key == 'ArrowRight') {
         try { previousPage(); } catch{ console.log('attempted to go before first page'); }
 
 
@@ -34,5 +44,5 @@ function checkKey(e) {
 
 }
 
-document.getElementsByName("post")[0].setAttribute('title', 'שיק תגובה (שארטקאט קאנטראל+ענטער)')
+document.getElementsByName("post")[0]?.setAttribute('title', 'שיק תגובה (שארטקאט קאנטראל+ענטער)')
 document.onkeydown = checkKey;
