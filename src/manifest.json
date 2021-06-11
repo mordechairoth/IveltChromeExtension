@@ -32,7 +32,8 @@
         "keyboardShortcuts.js",
         "removeNestedQuotes.js",
         "addQuoteLastOnlyButton.js",
-        "newResponseNotification.js"
+        "newResponseNotification.js",
+        "expandQuickLinks.js"
     ],
     "host_permissions": [
       "http://*.ivelt.com/",
