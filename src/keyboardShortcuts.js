@@ -9,11 +9,11 @@ function nextPage() {
 }
 
 function scrollTop() {
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
+    window.scrollTo(0, 0);
 }
 
 function scrollBottom() {
-    $('html, body').animate({ scrollTop: $(document).height() }, 'fast');
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function sendPost() {
