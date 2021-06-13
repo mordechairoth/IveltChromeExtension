@@ -18,11 +18,11 @@ function previewPost() {
 
 function checkKey(e) {
 
-    if (e.key == 'Enter' && e.ctrlKey) {
+    if (e.key == 'Enter' && e.ctrlKey && post) {
         sendPost(); 
     }
 
-    if (e.code == 'KeyV' && e.altKey) {
+    if (e.code == 'KeyV' && e.altKey && post) {
         previewPost(); 
     }
 
@@ -44,5 +44,9 @@ function checkKey(e) {
 
 }
 
-document.getElementsByName("post")[0]?.setAttribute('title', 'שיק תגובה (שארטקאט קאנטראל+ענטער)')
+
+let post = (document.getElementsByName("post") || [])[0];
+if(post){
+    post.setAttribute('title', 'שיק תגובה (שארטקאט קאנטראל+ענטער)');
+}
 document.onkeydown = checkKey;
