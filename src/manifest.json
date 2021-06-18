@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "ivelt keyboard shortcuts",
   "description": "enabe to go forward or backward in ivelt forums by pressing the right and left buttons, and other accessibility features for ivelt",
-  "version": "1.6",
+  "version": "1.8",
   "icons": {
     "48": "images/ivelt-logo-48x48.png",
     "128": "images/ivelt-logo-128x128.png"
