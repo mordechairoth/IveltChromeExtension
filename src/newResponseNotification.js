@@ -2,41 +2,39 @@ let currentCount = document.getElementsByClassName("post has-profile").length;
 let lastPost = document.getElementsByClassName("post has-profile")[currentCount -1]
 
 function isLastPage() {
-	return document.getElementsByClassName("next").length == 0;
+    return document.getElementsByClassName("next").length == 0;
 }
 
 let url = window.location.href;
 let checkNewResponse = setInterval(function () {
-	if (isLastPage() && currentCount > 0) {
-		$.ajax({
-			type: "GET",
-			url: url,
-			success: function (data) {
-				let newCount = (data.match(/class="post has-profile/g) || []).length;
-				let isNewPage = (data.match(/<li class="next">/g) || []).length > 0;
-				if (currentCount < newCount) {
-					lastPost.insertAdjacentHTML('afterend', 
-                        `<h3 style="margin: auto;text-align: center;">
-                            נייע תגובה איז יעצט אריינגעקומען
-                            <br>
-                            <a class="button" onclick="window.location.reload();">רילאוד</a>
+    if (isLastPage() && currentCount > 0) {
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                let newCount = (data.match(/class="post has-profile/g) || []).length;
+                let isNewPage = (data.match(/<li class="next">/g) || []).length > 0;
+                if (currentCount < newCount) {
+                    lastPost.insertAdjacentHTML('afterend', 
+                        `<h3 style="margin:4px auto;text-align:center;background:#cadceb;padding:7px 5px 5px 5px;border:none;border-radius:7px;">
+                            נייע תגובות זענען צוגעקומען
+                            <a class="button" style="width:150px;margin:5px auto;display:block;" onclick="window.location.reload();">רילאוד</a>
                         </h3>`)
 
-					let markUnreadUrls = (data.match(/\/forum\/app\.php\/markpostunread\/\d+\/\d+/g) || []);
+                    let markUnreadUrls = (data.match(/\/forum\/app\.php\/markpostunread\/\d+\/\d+/g) || []);
                     if(markUnreadUrls.length > currentCount)
-					    fetch(markUnreadUrls[currentCount]);
+                        fetch(markUnreadUrls[currentCount]);
                     
-					clearInterval(checkNewResponse);
-				}else if(isNewPage){
-					lastPost.insertAdjacentHTML('afterend', 
-                        `<h3 style="margin: auto;text-align: center;">
-                            פרישע בלאט איז יעצט צוגעקומען
-                            <br>
-                            <a class="button" ${(data.match(/href=".*" rel="next"/g) || [])[0]}>גיי צום קומענדיגן בלאט</a>
+                    clearInterval(checkNewResponse);
+                }else if(isNewPage){
+                    lastPost.insertAdjacentHTML('afterend', 
+                        `<h3 style="margin:4px auto;text-align:center;background:#efeed9;padding:5px;border:none;border-radius:7px;">
+                            א נייע בלאט איז צוגעקומען
+                            <a class="button" style="width:150px;margin:6px auto 5px auto;display:block;" ${(data.match(/href=".*" rel="next"/g) || [])[0]}>גיי צום קומענדיגן בלאט</a>
                         </h3>`)
-	                clearInterval(checkNewResponse);
+                    clearInterval(checkNewResponse);
                 }
-			},
-		});
-	}
+            },
+        });
+    }
 }, 20000);
