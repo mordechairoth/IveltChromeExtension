@@ -5,8 +5,8 @@
   "description": "Adds accessibility features, and other usability improvements to the אייוועלט forums.",
   "version": "1.6",
   "icons": {
-    "48": "images/ivelt-logo-48x48.png",
-    "128": "images/ivelt-logo-128x128.png"
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
   },
   "content_scripts": [
     {
@@ -15,7 +15,7 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
-      "js": ["contentScript.js", "refreshNotificationCount.js"]
+      "js": ["js/contentScript.js", "js/refreshNotificationCount.js"]
     }
   ],
   "background": {
@@ -24,9 +24,9 @@
   "browser_action": {},
   "permissions": ["alarms"],
   "web_accessible_resources": [
-    "keyboardShortcuts.js",
-    "removeNestedQuotes.js",
-    "addQuoteLastOnlyButton.js",
-    "newResponseNotification.js"
+    "js/keyboardShortcuts.js",
+    "js/removeNestedQuotes.js",
+    "js/addQuoteLastOnlyButton.js",
+    "js/newResponseNotification.js"
   ]
 }
