@@ -1,27 +1,16 @@
-var s = document.createElement('script');
-s.src = chrome.extension.getURL('keyboardShortcuts.js');
-(document.head || document.documentElement).appendChild(s);
-s.onload = function () {
-    s.parentNode.removeChild(s);
-};
+let scripts = [
+    "js/keyboardShortcuts.js",
+    "js/removeNestedQuotes.js",
+    "js/addQuoteLastOnlyButton.js",
+    "js/newResponseNotification.js",
+    "js/expandQuickLinks.js"
+];
 
-var u = document.createElement('script');
-u.src = chrome.extension.getURL('addQuoteLastOnlyButton.js');
-(document.head || document.documentElement).appendChild(u);
-u.onload = function () {
-    u.parentNode.removeChild(u);
-}
-
-var t = document.createElement('script');
-t.src = chrome.extension.getURL('removeNestedQuotes.js');
-(document.head || document.documentElement).appendChild(t);
-t.onload = function () {
-    t.parentNode.removeChild(t);
-}
-
-var n = document.createElement('script');
-n.src = chrome.extension.getURL('newResponseNotification.js');
-(document.head || document.documentElement).appendChild(n);
-n.onload = function () {
-    n.parentNode.removeChild(n);
-}
+scripts.forEach(s => {
+    let e = document.createElement('script');
+    e.src = chrome.extension.getURL(s);
+    (document.head || document.documentElement).appendChild(e);
+    e.onload = function () {
+        e.parentNode.removeChild(e);
+    };
+});
