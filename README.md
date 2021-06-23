@@ -1,4 +1,4 @@
-# IveltChromeExtension
+## iVelt Forum Helper
 A browser extension which adds accessibility and usability improvements to אייוועלט.
 
 ## Features:
