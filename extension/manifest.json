@@ -22,7 +22,16 @@
     "service_worker": "background.js"
   },
   "browser_action": {},
-  "permissions": ["alarms"],
+  "permissions": [
+    "tabs",
+    "alarms",
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.ivelt.com/*",
+    "*://*.198.153.76.147/*",
+    "*://*.yiddishworld.com/*",
+    "*://www.xn--4dbhss5b.com/*"
+  ],
   "web_accessible_resources": [
     "js/keyboardShortcuts.js",
     "js/removeNestedQuotes.js",
