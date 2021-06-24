@@ -27,9 +27,6 @@
     "alarms",
     "webRequest",
     "webRequestBlocking",
-    "*://*.ivelt.com/*",
-    "*://*.198.153.76.147/*",
-    "*://*.yiddishworld.com/*",
     "*://www.xn--4dbhss5b.com/*"
   ],
   "web_accessible_resources": [
