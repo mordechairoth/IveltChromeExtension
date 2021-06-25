@@ -10,4 +10,5 @@ A browser extension which adds accessibility and usability improvements to אי�
 * Various other fixes and options.
 
 ## Install
-Download and install from the **[Chrome Web Store](https://chrome.google.com/webstore/detail/ivelt-forum-helper/bcfoanjpmoikpanagkinedlihjbaijke)**
+1. Download and install from the **[Chrome Web Store](https://chrome.google.com/webstore/detail/ivelt-forum-helper/bcfoanjpmoikpanagkinedlihjbaijke)**
+2. Pin the extension to the toolbar for better visibility of the notification badge.
