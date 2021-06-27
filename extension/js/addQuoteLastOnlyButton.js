@@ -2,8 +2,6 @@ function addBtn(){
     let btns = document.querySelectorAll('.post-buttons');
     btns.forEach(btn => {
         let contentElement = btn.parentElement.getElementsByClassName("content").item(0)
-        let blockquotes = contentElement.getElementsByTagName("blockquote")
-        console.log(contentElement.innerText) 
         if (contentElement.innerHTML.includes("blockquote")){
             
             let li = document.createElement('li');
