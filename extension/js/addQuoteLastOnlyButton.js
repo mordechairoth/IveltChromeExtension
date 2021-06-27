@@ -16,10 +16,7 @@ function addBtn(){
             li.appendChild(a);
             btn.appendChild(li);
             a.innerText = '-'
-        }else{
-            console.log("No blockquote " + blockquotes.length)
         }
-
     });
     }
 
