@@ -34,60 +34,29 @@ if (onlyLastQuote) {
 	}
 }
 
-function lastaddquote(post_id, username, l_wrote) {
-	var message_name = 'message_' + post_id;
-	var theSelection = '';
-	var divarea = false;
-	var i;
+function lastaddquote(post_id, username) {
+	let messageName= 'message_' + post_id;
+	let theSelection = '';
+	let divArea = false;
 
-	if (l_wrote === undefined) {
-		// Backwards compatibility
-		l_wrote = 'wrote';
+	divArea = document.getElementById(messageName);
+
+	if (divArea.innerHTML) {
+		theSelection = divArea.innerHTML.replace(/<br>/ig, '\n');
+		theSelection = theSelection.replace(/<br\/>/ig, '\n');
+		theSelection = theSelection.replace(/&lt\;/ig, '<');
+		theSelection = theSelection.replace(/&gt\;/ig, '>');
+		theSelection = theSelection.replace(/&amp\;/ig, '&');
+		theSelection = theSelection.replace(/&nbsp\;/ig, ' ');
+	}  else if (divArea.textContent) {
+		theSelection = divArea.textContent;
+	} else if (divArea.firstChild.nodeValue) {
+		theSelection = divArea.firstChild.nodeValue;
 	}
 
-	if (document.all) {
-		divarea = document.all[message_name];
-	} else {
-		divarea = document.getElementById(message_name);
-	}
-
-	// Get text selection - not only the post content :(
-	// IE9 must use the document.selection method but has the *.getSelection so we just force no IE
-	if (window.getSelection && !is_ie && !window.opera) {
-		theSelection = window.getSelection().toString();
-	} else if (document.getSelection && !is_ie) {
-		theSelection = document.getSelection();
-	} else if (document.selection) {
-		theSelection = document.selection.createRange().text;
-	}
-
-	if (theSelection === '' || typeof theSelection === 'undefined' || theSelection === null) {
-		if (divarea.innerHTML) {
-			theSelection = divarea.innerHTML.replace(/<br>/ig, '\n');
-			theSelection = theSelection.replace(/<br\/>/ig, '\n');
-			theSelection = theSelection.replace(/&lt\;/ig, '<');
-			theSelection = theSelection.replace(/&gt\;/ig, '>');
-			theSelection = theSelection.replace(/&amp\;/ig, '&');
-			theSelection = theSelection.replace(/&nbsp\;/ig, ' ');
-		} else if (document.all) {
-			theSelection = divarea.innerText;
-		} else if (divarea.textContent) {
-			theSelection = divarea.textContent;
-		} else if (divarea.firstChild.nodeValue) {
-			theSelection = divarea.firstChild.nodeValue;
-		}
-	}
 	if (theSelection) {
-		if (bbcodeEnabled) {
-			let text = '[quote="' + username + '"]' + theSelection + '[/quote]'
-			insert_text(removeNestedQuotes(text));
-		} else {
-			insert_text(username + ' ' + l_wrote + ':' + '\n');
-			var lines = split_lines(theSelection);
-			for (i = 0; i < lines.length; i++) {
-				insert_text('> ' + lines[i] + '\n');
-			}
-		}
+		let text = '[quote="' + username + '"]' + theSelection + '[/quote]'
+		insert_text(removeNestedQuotes(text));
 	}
 
 	return;
