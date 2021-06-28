@@ -33,3 +33,31 @@ if (onlyLastQuote) {
 		messageArea.innerHTML = text;
 	}
 }
+
+function lastaddquote(post_id, username) {
+	let messageName= 'message_' + post_id;
+	let theSelection = '';
+	let divArea = false;
+
+	divArea = document.getElementById(messageName);
+
+	if (divArea.innerHTML) {
+		theSelection = divArea.innerHTML.replace(/<br>/ig, '\n');
+		theSelection = theSelection.replace(/<br\/>/ig, '\n');
+		theSelection = theSelection.replace(/&lt\;/ig, '<');
+		theSelection = theSelection.replace(/&gt\;/ig, '>');
+		theSelection = theSelection.replace(/&amp\;/ig, '&');
+		theSelection = theSelection.replace(/&nbsp\;/ig, ' ');
+	}  else if (divArea.textContent) {
+		theSelection = divArea.textContent;
+	} else if (divArea.firstChild.nodeValue) {
+		theSelection = divArea.firstChild.nodeValue;
+	}
+
+	if (theSelection) {
+		let text = '[quote="' + username + '"]' + theSelection + '[/quote]'
+		insert_text(removeNestedQuotes(text));
+	}
+
+	return;
+}
