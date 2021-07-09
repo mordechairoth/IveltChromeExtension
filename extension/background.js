@@ -31,3 +31,9 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   chrome.browserAction.setBadgeText({ text: request.text });
 });
+
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) { return { redirectUrl: 'https://ivelt.com/forum/' }; },
+  {urls: ['*://www.ןהקךא.com/*']},
+  ["blocking"]
+);

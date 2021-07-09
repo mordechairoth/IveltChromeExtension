@@ -46,10 +46,10 @@ function checkKey(e) {
         try { previousPage(); } catch{ console.log('attempted to go before first page'); }
     }
     else if (e.key == 'ArrowUp') {
-        scrollTop();
+        //scrollTop();
     }
     else if (e.key == 'ArrowDown') {
-        scrollBottom();
+        //scrollBottom();
     }
 
 }

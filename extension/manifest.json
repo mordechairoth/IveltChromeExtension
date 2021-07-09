@@ -3,10 +3,10 @@
   "manifest_version": 2,
   "name": "iVelt Forum Helper",
   "description": "Adds accessibility features, and other usability improvements to the אייוועלט forums.",
-  "version": "1.6",
+  "version": "1.9.3",
   "icons": {
-    "48": "images/ivelt-logo-48x48.png",
-    "128": "images/ivelt-logo-128x128.png"
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
   },
   "content_scripts": [
     {
@@ -15,18 +15,24 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
-      "js": ["contentScript.js", "refreshNotificationCount.js"]
+      "js": ["js/contentScript.js", "js/refreshNotificationCount.js"]
     }
   ],
   "background": {
     "service_worker": "background.js"
   },
   "browser_action": {},
-  "permissions": ["alarms"],
+  "permissions": [
+    "tabs",
+    "alarms",
+    "webRequest",
+    "webRequestBlocking",
+    "*://www.xn--4dbhss5b.com/*"
+  ],
   "web_accessible_resources": [
-    "keyboardShortcuts.js",
-    "removeNestedQuotes.js",
-    "addQuoteLastOnlyButton.js",
-    "newResponseNotification.js"
+    "js/keyboardShortcuts.js",
+    "js/removeNestedQuotes.js",
+    "js/addQuoteLastOnlyButton.js",
+    "js/newResponseNotification.js"
   ]
 }

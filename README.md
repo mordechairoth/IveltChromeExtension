@@ -1,11 +1,14 @@
-# IveltChromeExtension
-Browser Extension to add accessibility options and other features to www.ivelt.com 
+## iVelt Forum Helper
+A browser extension which adds accessibility and usability improvements to אייוועלט.
 
-To download the extension please go to the Chrome Web Store:
-https://chrome.google.com/webstore/detail/ivelt-keyboard-shortcuts/bcfoanjpmoikpanagkinedlihjbaijke
+## Features:
+* Go to next/previous page by pressing the left and right <kbd>←</kbd><kbd>→</kbd> keyboard keys.
+* Submit posts by <kbd>Ctrl</kbd>+<kbd>Enter</kbd>.
+* Receive inbox badge notifications even when not on אייוועלט.
+* New response notifications while on topic pages.
+* New page notification while on topic pages.
+* Various other fixes and options.
 
-## Extension features:
-* Go forward or backward in ivelt forums by pressing the right and left keyboard buttons
-* Submit post by pressing <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
-* See when you receive inbox notifications on iVelt, it adds an icon to the toolbar and updates the notification badge number when you have a new notification
-* **New Response Notification**: Get a prompt on the page, and a reload option, if a new post was added to the topic after you loaded the page
+## Install
+1. Download and install from the **[Chrome Web Store](https://chrome.google.com/webstore/detail/ivelt-forum-helper/bcfoanjpmoikpanagkinedlihjbaijke)**
+2. Pin the extension to the toolbar for better visibility of the notification badge.
