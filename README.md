@@ -4,7 +4,7 @@ A browser extension that adds accessibility and usability improvements to איי
 ## Features:
 * Go to next/previous page by pressing the left and right <kbd>←</kbd><kbd>→</kbd> keyboard keys
 * Submit posts by <kbd>Ctrl</kbd>+<kbd>Enter</kbd>
-* Preview posts by <kbd>Alt</kbd>+<kbd>V</kbd> (works both in Quick Post and Regaler Post)
+* Preview posts by <kbd>Alt</kbd>+<kbd>V</kbd> (works both in Quick Post and Regular Post)
 * Receive inbox badge notifications even when not on אייוועלט  
 ![image](https://user-images.githubusercontent.com/7387839/125001828-8c75b900-e021-11eb-890e-89ee38e124ed.png)
 * New response notifications while on topic pages  
