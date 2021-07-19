@@ -2,7 +2,8 @@ let scripts = [
     "js/keyboardShortcuts.js",
     "js/removeNestedQuotes.js",
     "js/addQuoteLastOnlyButton.js",
-    "js/newResponseNotification.js"
+    "js/newResponseNotification.js",
+    "js/addGoogleSearch.js"
 ];
 
 scripts.forEach(s => {
