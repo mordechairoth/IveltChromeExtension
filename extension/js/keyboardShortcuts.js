@@ -54,6 +54,9 @@ function checkKey(e) {
 
 }
 
+document.querySelector('.icon-search-active').innerHTML='"<a href=\"./search.php?search_id=active_topics\" accessKey="a" role=\"menuitem\">אקטיווע אשכולות</a>"';
+
+document.getElementById("notification_list_button").accessKey="n";
 
 let post = (document.getElementsByName("post") || [])[0];
 if(post){
