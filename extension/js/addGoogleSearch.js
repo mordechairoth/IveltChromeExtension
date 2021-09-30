@@ -1,4 +1,3 @@
-
 function addGoogleSearch(){
     if (window.location.href.includes("viewtopic.php")) {
         let topicTitle = document.querySelectorAll('.topic-title > a')[0].text;
@@ -18,3 +17,19 @@ function addGoogleSearch(){
 }
 
 addGoogleSearch();
+
+function addGoogleSiteSearch(){
+    let searchUrl = `https://www.google.com/search?q=site%3Aivelt.com+`
+        document.getElementById('search').insertAdjacentHTML('beforebegin', 
+            '<input id="g_site_search_keywords" type="search" class="inputbox search" style="border-radius:4px;margin-bottom: 5px;" placeholder="גוגל זוך אין אייוועלט">'
+        ) 
+
+        document.getElementById('g_site_search_keywords').addEventListener('keydown' ,function (e) {
+            if (e.key === 'Enter') {
+                window.open(searchUrl + document.getElementById('g_site_search_keywords').value, '_blank').focus();
+                e.preventDefault();
+            }
+        });
+}
+
+addGoogleSiteSearch();
