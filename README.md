@@ -1,4 +1,4 @@
-## iVelt Forum Helper
+# iVelt Forum Helper
 A browser extension that adds accessibility and usability improvements to אייוועלט.
 
 ## Features:
@@ -13,6 +13,8 @@ A browser extension that adds accessibility and usability improvements to איי
 ![image](https://user-images.githubusercontent.com/7387839/125004139-dd3be080-e026-11eb-83fd-0862d9b96ebf.png)
 * Quote Last reply option for posts that have quotes within them  
 ![image](https://user-images.githubusercontent.com/7387839/125003855-27709200-e026-11eb-8754-14a02c8e1398.png)
+* Search in thread using Google Search:  
+![UvlGCdGbBm](https://user-images.githubusercontent.com/87161728/129983287-466ceb87-463e-4b01-89b7-92937459a14e.png)
 * Various other fixes and options
 
 ## Download, Install, and Setup
