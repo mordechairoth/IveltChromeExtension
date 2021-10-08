@@ -56,7 +56,10 @@ function checkKey(e) {
 
 document.querySelector('.icon-search-active a').accessKey = "a";
 
-document.getElementById("notification_list_button").accessKey="n";
+const notificationNode = document.getElementById("notification_list_button")
+
+if(notificationNode)
+    notificationNode.accessKey = "n";
 
 let post = (document.getElementsByName("post") || [])[0];
 if(post){

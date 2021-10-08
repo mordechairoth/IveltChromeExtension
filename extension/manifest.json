@@ -15,7 +15,7 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
-      "js": ["js/contentScript.js", "js/refreshNotificationCount.js"]
+      "js": ["js/contentScript.js", "js/refreshNotificationCount.js", "js/settingsHandler.js"]
     }
   ],
   "background": {
@@ -27,6 +27,7 @@
     "alarms",
     "webRequest",
     "webRequestBlocking",
+    "storage",
     "*://www.xn--4dbhss5b.com/*"
   ],
   "web_accessible_resources": [
@@ -34,6 +35,12 @@
     "js/removeNestedQuotes.js",
     "js/addQuoteLastOnlyButton.js",
     "js/newResponseNotification.js",
-    "js/addGoogleSearch.js"
-  ]
+    "js/addGoogleSearch.js",
+    "js/settingsHandler.js"
+  ],
+  "options_ui": {
+    "page": "settings.html",
+    "open_in_tab": true,
+    "chrome_style": true
+  }
 }

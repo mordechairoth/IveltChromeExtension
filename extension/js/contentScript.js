@@ -3,7 +3,8 @@ let scripts = [
     "js/removeNestedQuotes.js",
     "js/addQuoteLastOnlyButton.js",
     "js/newResponseNotification.js",
-    "js/addGoogleSearch.js"
+    "js/addGoogleSearch.js",
+    "js/settingsHandler.js"
 ];
 
 scripts.forEach(s => {
