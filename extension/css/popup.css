@@ -1,0 +1,49 @@
+::selection {
+  background: transparent;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: #444;
+  font-size: 15px;
+  min-width: 200px;
+  background: #fff;
+  position: relative;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',Helvetica, Arial, sans-serif;
+}
+.popup_options {
+  padding: 2px;
+  cursor: pointer;
+  margin: 6px 12px;
+  text-align: right;
+}
+.popup_options:hover {
+  text-decoration: underline;
+}
+#quick_sign_in {
+  display: none;
+  color: #0000ff;
+  font-weight: bold
+}
+#emergency_sign_out {
+  display: none;
+  color: #FF0000;
+  font-weight: bold
+}
+.settings_divider {
+  padding-bottom: 3px;
+  border-top: 1px solid #ccc;
+}
