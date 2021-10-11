@@ -24,12 +24,18 @@
    "browser_action": {
     "default_popup": "popup.html"
   },
+  "options_page": "settings.html",
   "permissions": [
     "tabs",
     "alarms",
-    "webRequest",
-    "webRequestBlocking",
+    "cookies",
     "storage",
+    "webRequest",
+    "background",
+    "webRequestBlocking",
+    "*://*.ivelt.com/*",
+    "*://*.198.153.76.147/*",
+    "*://*.yiddishworld.com/*",
     "*://www.xn--4dbhss5b.com/*"
   ],
   "web_accessible_resources": [
