@@ -5,11 +5,12 @@ function showHideUserName(e) {
     hideUserName: hideUserName
   }, function() {
     // Update status to let user know options were saved.
-    var status = document.getElementById('status');
-    status.textContent = 'User\'s "nik" will be ' + (hideUserName ? 'hidden' : 'visible');
-    setTimeout(function() {
-      status.textContent = '';
-    }, 1000);
+    // No real use if users understand how it works
+    // var status = document.getElementById('status');
+    // status.textContent = 'User\'s "nik" will be ' + (hideUserName ? 'hidden' : 'visible');
+    // setTimeout(function() {
+    //   status.textContent = '';
+    // }, 1000);
   });
 }
 
