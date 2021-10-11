@@ -1,37 +1,45 @@
-<!DOCTYPE html>
-<html dir="rtl" lang="he">
-	<head>
-		<meta charset="utf-8">
-		<title>iVelt Extension Settings</title>
-	</head>
-	<body>
-		<div class="container">
-			<label>
-				<input type="checkbox" id="hideUserName">
-				באהאלט מיין ניק
-			</label>
-			<p><i>ביים אויסוועלן דעם אפציע וועט דיין ניק נאמען אויטאמאטיש ווערן באהאלטן און אנשטאט וועט מען זען "הא?".</i></p>
-			<!-- <hr>
-			<p>
-				<label>
-					<input type="checkbox" id="hideUserName2">
-					Second option 
-				</label>
-			</p> -->
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>iVelt Assistant | אייוועלט העלפער - Settings</title>
+  <link type='text/css' href='css/style.css' rel='stylesheet'>
+  <link type='text/css' href='css/fonts.css' rel='stylesheet'>
+  <script type='text/javascript' src='js/settings.js'></script>
+  </head>
+  <body>
+  <div class="mainContent">
+  <div class="pageHeader"><h1 id="header">iVelt Assistant | אייוועלט העלפער</h1></div>
 
-			<div id="status"></div>
-		</div>
+  <div dir="rtl" class="credits">
+    <h4 >קרעדיט:</h4>
+    <ul>
+      <li><div>קו הישר</div></li>
+      <li><div>מים חיים</div></li>
+      <li><div>ממה נפשך</div></li>
+      <li><div>קנאפער ידען</div></li>
+      <li><div>רבות מחשבות</div></li>
+      <!-- <li><div>דיען אומקע</div></li> -->
+      <!-- <li><div>גיאָוואַני סאָולאָן</div></li> -->
+      <!-- <li><div>ליעם דזשאנסטאן</div></li> -->
+      <li><div>יקירי קרתא דק"ק אייוועלט</div></li>
+      <li><div style="user-select:none;">&thinsp;</div></li>
+    </ul>
+  </div>
 
-		<script src="settings.js"></script>
-		<style>
-			.container {
-				margin: 25px auto;
-				padding: 15px;
-				max-width: 750px;
-				border: 1px solid #d5d8d9;
-				box-shadow: 1px 1px 3px #d5d8d9;
-				border-radius: 5px;
-			}
-		</style>
-	</body>
+  <div class='content'>
+    <div class='sub-section'>
+      <h2 dir="rtl">אנשטעלונגען</h2>
+
+      <div class='row'>
+        <input type='checkbox' id='hideUserName' class='option' />
+        <label for='hideUserName' class='label'>ווייז נישט מיין ניק ווען איך בין אריינגעסיינט</label>
+      </div>
+
+    </div>
+  </div>
+
+  </div>
+  <script src="js/settings.js"></script>
+  </body>
 </html>
