@@ -5,7 +5,6 @@ html, body {
     margin: 0;
     padding: 0;
     font-size: 10px;
-    min-height: 100%;
 }
 html {
     height: 100vh;
@@ -16,7 +15,6 @@ html {
 }
 body {
     color: #444;
-    min-height: 100%;
     font-size: 1.5rem;
     line-height: 1.5em;
     background: #fafafa;
@@ -59,6 +57,23 @@ hr {
 .row {
     margin: 0 0 24px;
     text-align: right;
+}
+#notify {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    opacity: 0;
+    background: #eee;
+    font-weight: 500;
+    text-align: center;
+    padding: 5px 25px 7px 25px;
+    transform: translateX(-50%);
+    border-left: 2px solid #999;
+    border-right: 2px solid #999;
+    border-bottom: 2px solid #999;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transition: opacity 0.75s linear;
 }
 .mainContent {
     width: 750px;
@@ -122,4 +137,7 @@ input[type='checkbox'] + label:before {
 input[type='checkbox']:checked + label:before {
     content: '\f14a';
     color: #3477db;
+}
+#notify.fade {
+    opacity: 1;
 }
