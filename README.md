@@ -2,7 +2,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/mordechairoth/IveltChromeExtension?label=GitHub%20Release%20Version&style=flat-square&color=42a5f5)](https://github.com/mordechairoth/IveltChromeExtension/releases/latest/) 
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/users/bcfoanjpmoikpanagkinedlihjbaijke?label=Users&style=flat-square&color=9575cd)
 
-# iVelt Forum Helper
+# iVelt Helper
 A browser extension that adds accessibility and usability improvements to אייוועלט.
 
 ## Features
@@ -20,7 +20,7 @@ A browser extension that adds accessibility and usability improvements to איי
 1. Visit the **[Chrome Web Store](https://chrome.google.com/webstore/detail/ivelt-forum-helper/bcfoanjpmoikpanagkinedlihjbaijke)** page
 2. Click **Add to Chrome**.
 3. Confirm the **Add extension** popup.
-4. Pin **iVelt Forum Helper** to the toolbar for better visibility of the notification badge.
+4. Pin **iVelt Helper** to the toolbar for better visibility of the notification badge.
 
 
 ## Install from GitHub (manual install)
