@@ -1,0 +1,143 @@
+::selection {
+  background: #fff567
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+}
+html {
+    height: 100vh;
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+body {
+    color: #444;
+    font-size: 1.5rem;
+    line-height: 1.5em;
+    background: #fafafa;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji','Segoe UI Symbol';
+}
+strong {
+    font-weight: 600;
+}
+small {
+    font-size: smaller;
+}
+h1 {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+p {
+    margin: 0 0 15px;
+}
+a {
+    color: #3477db;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a.active {
+    color: #444;
+    cursor: default;
+    pointer-events: none;
+}
+hr {
+    height: 1px;
+    margin: 23px 0;
+    border-width: 0;
+    border-top: 1px solid #e7e7e7;
+}
+.row {
+    margin: 0 0 24px;
+    text-align: right;
+}
+#notify {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    opacity: 0;
+    background: #eee;
+    font-weight: 500;
+    text-align: center;
+    padding: 5px 25px 7px 25px;
+    transform: translateX(-50%);
+    border-left: 2px solid #999;
+    border-right: 2px solid #999;
+    border-bottom: 2px solid #999;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transition: opacity 0.75s linear;
+}
+.mainContent {
+    width: 750px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-column-gap: 40px;
+    grid-template-areas:
+    'h h'
+    'n m';
+}
+.pageHeader {
+    grid-area: h;
+    margin: 0 0 50px;
+    font-size: 20px;
+}
+.credits {
+    grid-area: n;
+    border-right: 1px solid #ddd;
+    padding-right: 15px;
+    align-self: start;
+}
+.credits ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.content {
+    grid-area: m;
+    font-size: 16px;
+}
+.content h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 30px;
+}
+.sub-section {
+    margin-bottom: 35px;
+    font-size: 18px;
+}
+input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+}
+input[type='checkbox'] + label {
+    position: relative;
+    padding-right: 30px;
+    cursor: pointer;
+}
+input[type='checkbox'] + label:before {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    font-family: 'checkbox';
+    text-decoration: none;
+    content: '\f096';
+    color: #888;
+    font-size: 24px;
+    cursor: pointer;
+}
+input[type='checkbox']:checked + label:before {
+    content: '\f14a';
+    color: #3477db;
+}
+#notify.fade {
+    opacity: 1;
+}

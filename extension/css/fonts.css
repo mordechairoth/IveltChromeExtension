@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'checkbox';
+  src: url('../fonts/checkbox.woff2') format('woff2'), url('../fonts/checkbox.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^='icon-']:before, [class*=' icon-']:before {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: inherit;
+  font-family: 'checkbox';
+  display: inline-block;
+  font-variant: normal;
+  text-transform: none;
+  font-weight: normal;
+  margin-right: 0.2em;
+  font-style: normal;
+  text-align: center;
+  margin-left: 0.2em;
+  line-height: 1em;
+  speak: none;
+  width: 1em;
+}
+.icon-help-circled:before {
+  content: '\e80a';
+}
+.icon-check-empty:before {
+  content: '\f096';
+}
+.icon-sort-down:before {
+  content: '\f0dd';
+}
+.icon-minus-squared-alt:before {
+  content: '\f147';
+}
+.icon-ok-squared:before {
+  content: '\f14a';
+}
+.icon-plus-squared-alt:before {
+  content: '\f196';
+}

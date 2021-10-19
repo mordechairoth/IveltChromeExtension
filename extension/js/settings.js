@@ -5,11 +5,12 @@ function showHideUserName(e) {
     hideUserName: hideUserName
   }, function() {
     // Update status to let user know options were saved.
-    var status = document.getElementById('status');
-    status.textContent = 'User\'s "nik" will be ' + (hideUserName ? 'hidden' : 'visible');
+    // Will not be useful with multiple settings, autosave with no user messages is the corect way.
+    const fadeTarget = document.getElementById('notify');
+    fadeTarget.classList.add('fade');
     setTimeout(function() {
-      status.textContent = '';
-    }, 1000);
+        fadeTarget.classList.remove('fade');
+    }, 3650);
   });
 }
 
