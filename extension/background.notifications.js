@@ -68,7 +68,7 @@ function parseAndSendNotifications(data){
     // save sent items in storage
     // TODO: prune old ids to avoid storage quota errors
     chrome.storage.sync.set({
-      'notificationsSent': items.notificationsSent + ',' + saveNewIds
+      'notificationsSent': (items.notificationsSent ? items.notificationsSent + ',' : '') + saveNewIds
     }, () => {
       // dont send the initial batch
       if(storeOnly){
