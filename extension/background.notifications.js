@@ -3,21 +3,22 @@ let initialNotificationBatch = true;
 
 var queue = [];
 var queueTimer = null;
-var linkMap = {};
 
 chrome.notifications.onClicked.addListener(function(notifId) {
-    if(linkMap[notifId]){
-      // got to link
-      chrome.tabs.create({url: linkMap[notifId]}, tab => {
-        // focus window
-        chrome.windows.update(tab.windowId, {focused: true});
-        // remove notification from feed
-        chrome.notifications.clear(notifId, wasCleared => {
-          if(wasCleared)
-            delete linkMap[notifId];
-        });
-      });
-    }
+
+  if(!notifId.includes('-'))
+    return;
+
+  const paramValues = notifId.split('-');
+  const link = `${origin}forum/index.php?mark_notification=${paramValues[0]}&hash=${paramValues[1]}`;
+  
+  // open tab to url
+  chrome.tabs.create({url: link}, tab => {
+    // focus window
+    chrome.windows.update(tab.windowId, {focused: true});
+    // remove notification from feed
+    chrome.notifications.clear(notifId);
+  });
 });
 
 function parseAndSendNotifications(data){
@@ -35,16 +36,25 @@ function parseAndSendNotifications(data){
 
   var unread = unreadElements.map(item => {
 
-    var notificationParts = getTagContent(item, 'p', 'notifications_title', true)[0].split(':');
-    var time = getTagContent(item, 'p', 'notifications_time', true)[0];
-    var link = htmlToText(getAttrValue(item, 'a', 'href')); // to text for htmlized "&"
+    const href = getAttrValue(item, 'a', 'href');
+    let notificationParts = getTagContent(item, 'p', 'notifications_title', true)[0].split(':');
+    const time = getTagContent(item, 'p', 'notifications_time', true)[0];
+    let id;
+
+    // not all notifications have a link
+    if(href){
+      const url = new URL(htmlToText(href).replace('./', origin + 'forum/')); // to text for htmlized "&"
+      id = url.searchParams.get('mark_notification') + '-' + url.searchParams.get('hash');
+    }
+    else {
+      id = getAttrValue(item, 'input', 'value');
+    }
 
     return {
       title: notificationParts.shift(),
       message: notificationParts.join(':'),
-      link: link.replace('./', origin + 'forum/'),
       subMessage: time,
-      id: getAttrValue(item, 'input', 'value')
+      id: id
     }
   });
 
@@ -60,10 +70,7 @@ function parseAndSendNotifications(data){
     if(!unread.length)
       return;
 
-    var saveNewIds = unread.map(u => {
-      linkMap[u.id] = u.link;
-      return u.id;
-    }).join(',');
+    var saveNewIds = unread.map(u => u.id).join(',');
 
     // save sent items in storage
     // TODO: prune old ids to avoid storage quota errors
@@ -132,13 +139,14 @@ function getTagContent(string, tag, className, textOnly){
 }
 
 function getAttrValue(string, tag, attr){
-  return string.match(new RegExp(`<${tag}.*${attr}="([^"]+)"`))[1];
+  const match = string.match(new RegExp(`<${tag}.*${attr}="([^"]+)"`));
+  return match && match[1];
 }
 
 function htmlToText(string){
   return string.replace(/<[^>]*>/g, ' ')
     .replace(/\s{2,}/g, ' ')
-    .replace('&amp;', '&')
+    .replace(/&amp;/g, '&')
     .replace(/&[a-z]+;/g, '')
     .trim();
 }

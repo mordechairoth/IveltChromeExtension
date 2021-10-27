@@ -15,7 +15,7 @@ let checkNewNotification = function () {
         chrome.browserAction.setBadgeText({ text: "" });
       }
 
-      // send html to a hidden ivelt window for parsing
+      // triggere browser notifications
       chrome.storage.sync.get(['getBrowserNotifications'], function(items){
         if(items.getBrowserNotifications){
           parseAndSendNotifications(data);
