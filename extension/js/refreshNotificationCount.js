@@ -1,10 +1,10 @@
 let checkNewNotification = function() {
-    let newCount = (notificationNode.innerHTML.match(/\d+/) || ['0'])[0]
+    let newCount = (notificationNode.innerHTML.match(/\d+/) || ['0'])[0];
     if (newCount !== '0') {
-        chrome.runtime.sendMessage({text: newCount});
+        chrome.runtime.sendMessage({text: newCount, type: 'badgeText'});
     }
     else{
-        chrome.runtime.sendMessage({text: ''});
+        chrome.runtime.sendMessage({text: '', type: 'badgeText'});
     }
 }
 

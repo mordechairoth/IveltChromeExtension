@@ -1,18 +1,26 @@
-const notificationUrl =
-  "http://www.ivelt.com/forum/ucp.php?i=ucp_notifications";
+const notificationUrl = "http://www.ivelt.com/forum/ucp.php?i=ucp_notifications";
 
 let checkNewNotification = function () {
-  fetch(notificationUrl)
-    .then((response) => response.text())
-    .then((data) => {
+    fetch(notificationUrl)
+      .then((response) => response.text())
+      .then((data) => {
+
       let matches =
         data.match(/id="notification_list_button"\D*(\d{1,4})/) || [];
       let newCount = matches.length == 2 ? matches[1] : "0";
+
       if (newCount !== "0") {
         chrome.browserAction.setBadgeText({ text: newCount });
       } else {
         chrome.browserAction.setBadgeText({ text: "" });
       }
+
+      // triggere browser notifications
+      chrome.storage.sync.get(['getBrowserNotifications'], function(items){
+        if(items.getBrowserNotifications){
+          parseAndSendNotifications(data);
+        }
+      });
     });
 };
 
@@ -29,7 +37,14 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  chrome.browserAction.setBadgeText({ text: request.text });
+  if(request.type === 'badgeText'){
+    chrome.browserAction.setBadgeText({ text: request.text });
+  }
+
+  // global method to send a notification
+  if(request.type === 'browserNotification'){
+    queueNotification(request);
+  }
 });
 
 chrome.webRequest.onBeforeRequest.addListener(
@@ -37,3 +52,5 @@ chrome.webRequest.onBeforeRequest.addListener(
   {urls: ['*://www.ןהקךא.com/*']},
   ["blocking"]
 );
+
+importScripts('./background.notifications.js')

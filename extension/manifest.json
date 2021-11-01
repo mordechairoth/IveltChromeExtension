@@ -30,6 +30,7 @@
     "alarms",
     "cookies",
     "storage",
+    "notifications",
     "webRequest",
     "background",
     "webRequestBlocking",
