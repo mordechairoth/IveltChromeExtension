@@ -10,6 +10,11 @@ function startListeners(){
 	document.getElementById('getBrowserNotifications').addEventListener('change', (e) => {
 		commitNewSetting({getBrowserNotifications: !!e.currentTarget.checked});
 	});
+
+	// get browser notification checkbox
+	document.getElementById('warnOnLosingPost').addEventListener('change', (e) => {
+		commitNewSetting({warnOnLosingPost: !!e.currentTarget.checked});
+	});
 }
 
 // Saves settings to chrome.storage
@@ -25,17 +30,13 @@ function commitNewSetting(nameValue){
 	});
 }
 
-// Restores settings options using the preferences
-// stored in chrome.storage.
 function initSettings() {
 
-	// Get preferences or set defaults
-	chrome.storage.sync.get({
-		hideUserName: false,
-		getBrowserNotifications: false
-	}, function(items) {
+	// Get all preferences from storage to set fields as needed
+	chrome.storage.sync.get(null, function(items) {
 		document.getElementById('hideUserName').checked = items.hideUserName;
 		document.getElementById('getBrowserNotifications').checked = items.getBrowserNotifications;
+		document.getElementById('warnOnLosingPost').checked = items.warnOnLosingPost;
 
 		startListeners();
 	});

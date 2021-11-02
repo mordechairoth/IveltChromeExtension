@@ -29,6 +29,16 @@ chrome.alarms.onAlarm.addListener((a) => {
 });
 
 chrome.runtime.onInstalled.addListener(() => {
+  // set default settings to storage
+  chrome.storage.sync.get({
+    hideUserName: false,
+    getBrowserNotifications: false,
+    warnOnLosingPost: true
+  }, function(items){
+    if(items && Object.keys(items).length)
+      chrome.storage.sync.set(items);
+  });
+
   chrome.alarms.get("alarm", (a) => {
     if (!a) {
       chrome.alarms.create("alarm", { periodInMinutes: 1 });
