@@ -54,6 +54,12 @@ hr {
     border-width: 0;
     border-top: 1px solid #e7e7e7;
 }
+.hidden {
+    display: none;
+}
+.warning {
+    color: #a50e0e;
+}
 .row {
     margin: 0 0 24px;
     text-align: right;
