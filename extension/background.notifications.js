@@ -1,5 +1,4 @@
 const origin = 'https://www.ivelt.com/';
-let initialNotificationBatch = true;
 
 var queue = [];
 var queueTimer = null;
@@ -25,44 +24,49 @@ function parseAndSendNotifications(data){
   var unreadElements = getTagContent(data, 'li', 'row bg3');
   var storeOnly = false;
 
-  if(initialNotificationBatch){
-    initialNotificationBatch = false;
-    storeOnly = true;
-  }
+  chrome.storage.sync.get(['notificationsSent', 'isFreshInstall'], items => {
 
-  if(!unreadElements.length){
-    return;
-  }
+    debugLog('isFreshInstall', items.isFreshInstall);
 
-  var unread = unreadElements.map(item => {
-
-    const href = getAttrValue(item, 'a', 'href');
-    let notificationParts = getTagContent(item, 'p', 'notifications_title', true)[0].split(':');
-    const time = getTagContent(item, 'p', 'notifications_time', true)[0];
-    let id;
-
-    // not all notifications have a link
-    if(href){
-      const url = new URL(htmlToText(href).replace('./', origin + 'forum/')); // to text for htmlized "&"
-      id = url.searchParams.get('mark_notification') + '-' + url.searchParams.get('hash');
-    }
-    else {
-      id = getAttrValue(item, 'input', 'value');
+    if(items.isFreshInstall){
+      chrome.storage.sync.remove('isFreshInstall');
+      storeOnly = true;
     }
 
-    return {
-      title: notificationParts.shift(),
-      message: notificationParts.join(':'),
-      subMessage: time,
-      id: id
+    if(!unreadElements.length){
+      return;
     }
-  });
 
-  chrome.storage.sync.get(['notificationsSent'], items => {
+    var unread = unreadElements.map(item => {
+
+      const href = getAttrValue(item, 'a', 'href');
+      let notificationParts = getTagContent(item, 'p', 'notifications_title', true)[0].split(':');
+      const time = getTagContent(item, 'p', 'notifications_time', true)[0];
+      let id;
+
+      // not all notifications have a link
+      if(href){
+        const url = new URL(htmlToText(href).replace('./', origin + 'forum/')); // to text for htmlized "&"
+        id = url.searchParams.get('mark_notification') + '-' + url.searchParams.get('hash');
+      }
+      else {
+        id = getAttrValue(item, 'input', 'value');
+      }
+
+      debugLog(id, notificationParts[0].substr(0, 10));
+
+      return {
+        title: notificationParts.shift(),
+        message: notificationParts.join(':'),
+        subMessage: time,
+        id: id
+      }
+    });
     
     // filter sent items
     if(items.notificationsSent){
       unread = unread.filter(u => {
+        debugLog(u.id, 'Was already sent: ' + !!items.notificationsSent.includes(u.id));
         return !items.notificationsSent.includes(u.id)
       });
     }
@@ -70,15 +74,23 @@ function parseAndSendNotifications(data){
     if(!unread.length)
       return;
 
-    var saveNewIds = unread.map(u => u.id).join(',');
+    var saveNewIds = unread.map(u => {
+      debugLog(u.id, 'storeOnly: ' + storeOnly);
+      return u.id;
+    }).join(',');
+
+    var notificationsSent = (items.notificationsSent ? items.notificationsSent + ',' : '') + saveNewIds;
+
+    debugLog(unread[0].id, 'savingBytes: ' + notificationsSent.length);
 
     // save sent items in storage
     // TODO: prune old ids to avoid storage quota errors
     chrome.storage.sync.set({
-      'notificationsSent': (items.notificationsSent ? items.notificationsSent + ',' : '') + saveNewIds
+      'notificationsSent': notificationsSent
     }, () => {
       // dont send the initial batch
       if(storeOnly){
+        storeOnly = false;
         return;
       }
 
@@ -89,6 +101,8 @@ function parseAndSendNotifications(data){
 
 // send one browser notification at a time, every 10 seconds
 function queueNotification(notification){
+
+  debugLog(notification.id, 'Queing notification');
 
   queue.push(notification);
 
@@ -105,6 +119,7 @@ function queueNotification(notification){
 }
 
 function sendBrowserNotification(item){
+  debugLog(item.id, 'Sending notification');
   chrome.notifications.create(item.id, {
     type: 'basic',
     iconUrl: origin + 'fav/apple-icon-60x60.png',
