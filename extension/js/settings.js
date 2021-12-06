@@ -11,6 +11,10 @@ function startListeners(){
 		commitNewSetting({getBrowserNotifications: !!e.currentTarget.checked});
 	});
 
+	// get browser notification checkbox
+	document.getElementById('warnOnLosingPost').addEventListener('change', (e) => {
+		commitNewSetting({warnOnLosingPost: !!e.currentTarget.checked});
+	});
 	// debug mode
 	document.getElementById('debugMode').addEventListener('change', (e) => {
 		commitNewSetting({debugMode: !!e.currentTarget.checked});
@@ -52,6 +56,7 @@ function initSettings() {
 	chrome.storage.sync.get(null, function(items) {
 		document.getElementById('hideUserName').checked = items.hideUserName;
 		document.getElementById('getBrowserNotifications').checked = items.getBrowserNotifications;
+		document.getElementById('warnOnLosingPost').checked = items.warnOnLosingPost;
 		document.getElementById('debugMode').checked = items.debugMode;
 		document.querySelector('.js-copy-logs').classList.toggle('hidden', !items.debugMode);
 

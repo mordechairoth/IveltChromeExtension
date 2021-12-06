@@ -37,6 +37,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.get({
     hideUserName: false,
     getBrowserNotifications: false,
+    warnOnLosingPost: true,
     isFreshInstall: true, // needed for initial notifications
     debugMode: false
   }, function(items){
