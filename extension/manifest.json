@@ -15,6 +15,7 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
+	  "css":["css/appcss.css"],
       "js": ["js/contentScript.js", "js/refreshNotificationCount.js", "js/settingsHandler.js"]
     }
   ],
@@ -45,7 +46,11 @@
     "js/addQuoteLastOnlyButton.js",
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
-    "js/settingsHandler.js"
+    "js/settingsHandler.js",
+	"js/add_button.js",
+	"img/baseline_alternate_email_black_24dp.png",
+	"img/quote_last.png"
+
   ],
   "options_ui": {
     "page": "settings.html",
