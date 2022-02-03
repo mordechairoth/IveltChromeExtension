@@ -1,0 +1,52 @@
+
+.post-buttons .button.custom-button img {
+    object-fit: contain !important;
+    padding-top: 3px !important;
+    height:12px !important;
+    width:18px !important;
+	
+}
+.post-buttons .app-hidden {
+    display: none;
+}
+.button .custom-button.quote-last{   
+	height:0px !important;
+    width:0px !important;
+}
+
+.post-buttons .button.custom-button.quote-last img {
+	object-fit: contain !important;
+    padding-top: 5px !important;
+    height:12px !important;
+    width:18px !important;
+}
+
+.post-buttons .button.custom-button span{
+    display: block;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0px;
+}
+.clone-first .custom-button img{
+    display: block;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+.clone-first .app-hidden {
+    display: none;
+}
+.clone-first.app-hidden {
+    display: none;
+}
+.custom-button{
+    height:18px !important;
+    width:20px !important;
+    object-fit: contain !important;
+    margin:0 !important;
+    padding: 0 !important;
+    text-align:center;
+    user-select:none;
+}
