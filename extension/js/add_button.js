@@ -4,8 +4,8 @@ function createButton(icon, reference, customClass, title, text, onclick) {
     let li = document.createElement('li');
     let a = document.createElement('a');
     let span = document.createElement('span');
-    let img = document.createElement('img');
-    img.setAttribute("src", `${icon}`)
+    //let img = document.createElement('img');
+    //img.setAttribute("src", chrome-extension://__MSG_@@extension_id__/img/${icon})
     if (reference){
         a.setAttribute('href', reference);
     }
@@ -16,9 +16,9 @@ function createButton(icon, reference, customClass, title, text, onclick) {
     a.setAttribute('title',title );
     span.innerText = text;
     a.appendChild(span);
-    a.appendChild(img);
+    //a.appendChild(img);
     li.appendChild(a);
-    return {li, a, span, img}
+    return {li, a, span, }
 }
 
 function getPMHref(id) {
@@ -48,11 +48,7 @@ function addBtn(){
         let strippedId = id.replace("post_content", "")
         strippedId = strippedId.replace("pr", "")
         let pingOnClick = `ping_user(${strippedId})`
-		document.addEventListener('yourCustomEvent', function (e)
-		{
-			var url=e.detail;
-			addSimpleButton(btn, url+'baseline_alternate_email_black_24dp.png', null, 'ping-icon', 'דערמאן תגובה', 'דערמאן תגובה', pingOnClick)
-		});
+		addSimpleButton(btn, null, null, 'ping-icon', 'דערמאן תגובה', 'דערמאן תגובה', pingOnClick)
 		if (contentElement.innerHTML.includes("blockquote")) {
             addQuoteLastButton(btn, isPosting);
         }
@@ -113,12 +109,10 @@ function addQuoteLastButton(btn, isPosting) {
     if (isPosting){
        onclick = "last" + btn.querySelector('a.button.icon-button.quote-icon').getAttribute('onclick');
     }
-	document.addEventListener('yourCustomEvent', function (e)
-	{
-		var url=e.detail;	
-		let button = createButton(url+'quote_last.png', href + '&last=true', 'quote-last', 'ציטיר בלויז די לעצטע תגובה', 'ציטיר לעצטע', onclick);
-		btn.appendChild(button.li);
-	});
+	
+let button = createButton(null, href + '&last=true', 'quote-last', 'ציטיר בלויז די לעצטע תגובה', 'ציטיר לעצטע', onclick);
+	btn.appendChild(button.li);
+
 }
 
 function ping_user(post_id){
