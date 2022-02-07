@@ -5,7 +5,12 @@
     position: absolute;
     width: 0px;
 }
-.custom-button{
+.custom-button {
+	background: transparent 0 0 no-repeat;
+	content: '';
+	display: inline-block;
+	float: right;
+	margin: 3px 0 0 2px;
     height:18px !important;
     width:22px !important;
     object-fit: contain !important;
@@ -19,4 +24,15 @@
 }
 .ping-icon{ 
 	background-image: url("chrome-extension://__MSG_@@extension_id__/img/baseline_alternate_email_black_24dp.png") !important;
+}
+.copy-quote{
+	background-image: url("chrome-extension://__MSG_@@extension_id__/img/ivelt_logo.png") !important;
+}
+
+.clone-first .app-hidden {
+    display: none;
+}
+.clone-first.app-hidden {
+    display: none;
+}
 }
