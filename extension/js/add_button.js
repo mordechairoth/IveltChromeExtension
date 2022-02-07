@@ -47,7 +47,14 @@ function addBtn(){
         let id = btn.parentElement.getAttribute("id") || ""
         let strippedId = id.replace("post_content", "")
         strippedId = strippedId.replace("pr", "")
-        let pingOnClick = `ping_user(${strippedId})`
+		if (!isPosting){
+            //addSimpleButton(btn, 'share.png', null, 'share-icon', 'טייל מיט די תגובה','טייל מיט', `sharePost(${id})`)
+            addCopyQuoteButton(btn, id.replace("post_content", ""))
+            //let pm_href = getPMHref(id);
+            //if (pm_href){
+                //addSimpleButton(btn, 'pm_icon.png', pm_href, "app-pm-icon", 'שיק א פריוואטע מעסעדזש', 'שיק א פריוואטע מעסעדזש')
+		}	
+		let pingOnClick = `ping_user(${strippedId})`
 		addSimpleButton(btn, null, null, 'ping-icon', 'דערמאן תגובה', 'דערמאן תגובה', pingOnClick)
 		if (contentElement.innerHTML.includes("blockquote")) {
             addQuoteLastButton(btn, isPosting);
@@ -99,6 +106,16 @@ function getUsername(post_id, prefix = 'p'){
     return username
 }
 
+function addCopyQuoteButton(btn, postID){
+    let href = getPMHref(postID) || getQuoteURL(btn)
+    if (!href){
+        addSimpleButton(btn, null, null, 'copy-quote', 'ציטיר אין אנדערע אשכול', 'ציטיר אין אנדערע אשכול', `copyQuoteParse("${postID}")`)
+        return;
+    }
+    addSimpleButton(btn, null, null, 'copy-quote', 'ציטיר אין אנדערע אשכול', 'ציטיר אין אנדערע אשכול', `copyQuote("${href}", "${postID}")`)
+}
+
+
 function addQuoteLastButton(btn, isPosting) {
 
     let href = getQuoteURL(btn)
@@ -113,6 +130,15 @@ function addQuoteLastButton(btn, isPosting) {
 let button = createButton(null, href + '&last=true', 'quote-last', 'ציטיר בלויז די לעצטע תגובה', 'ציטיר לעצטע', onclick);
 	btn.appendChild(button.li);
 
+}
+function copyQuoteParse(post_id){
+    var html = document.querySelector(`#post_content${post_id} .content`).innerHTML
+    let post_url = getPostLink(post_id)
+    var username = getUsername(post_id)
+    let converter = new HTML2BBCode();
+    html = html.replaceAll("./download", "www.ivelt.com/forum/download")
+//    android.copyToClipboard(`[quote="${username}"]${bbcodeParser.htmlToBBCode(html).replaceAll('<br>', '')} [/quote] [url=${post_url}]מקור[/url]`)
+    navigator.clipboard.writeText(`[quote="${username}"]${converter.feed(html)} [/quote] [url=${post_url}]מקור[/url]`)
 }
 
 function ping_user(post_id){
