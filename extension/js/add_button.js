@@ -1,6 +1,5 @@
 function createButton(icon, reference, customClass, title, text, onclick) {
 
-	
     let li = document.createElement('li');
     let a = document.createElement('a');
     let span = document.createElement('span');
