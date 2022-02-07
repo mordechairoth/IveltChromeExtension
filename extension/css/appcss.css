@@ -21,12 +21,20 @@
 }
 .quote-last{ 
 	background-image: url("chrome-extension://__MSG_@@extension_id__/img/quote_last.png") !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
 }
 .ping-icon{ 
 	background-image: url("chrome-extension://__MSG_@@extension_id__/img/baseline_alternate_email_black_24dp.png") !important;
+	background-size: 98% 98% !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
 }
 .copy-quote{
 	background-image: url("chrome-extension://__MSG_@@extension_id__/img/ivelt_logo.png") !important;
+	background-size: 95% 95% !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
 }
 
 .clone-first .app-hidden {
