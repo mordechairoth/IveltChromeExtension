@@ -4,7 +4,7 @@ let lastPost = document.getElementsByClassName("post has-profile")[currentCount 
 function isLastPage() {
     return document.getElementsByClassName("next").length == 0;
 }
-
+let title = document.title;
 let url = window.location.href;
 let checkNewResponse = setInterval(function () {
     if (isLastPage() && currentCount > 0) {
@@ -25,6 +25,9 @@ let checkNewResponse = setInterval(function () {
                     if(markUnreadUrls.length > currentCount)
                         fetch(markUnreadUrls[currentCount]);
                     
+                    setInterval(function(){                                   
+                        document.title = (document.title == title ? '\u26B9 ' + title : title);
+                    }, 500);
                     clearInterval(checkNewResponse);
                 }else if(isNewPage){
                     lastPost.insertAdjacentHTML('afterend', 
@@ -32,6 +35,10 @@ let checkNewResponse = setInterval(function () {
                             א נייע בלאט איז צוגעקומען
                             <a class="button" style="width:150px;margin:6px auto 5px auto;display:block;" ${(data.match(/href=".*" rel="next"/g) || [])[0]}>גיי צום קומענדיגן בלאט</a>
                         </h3>`)
+                    
+                    setInterval(function(){                                   
+                        document.title = (document.title == title ? '\u26B9 ' + title : title);
+                    }, 500);
                     clearInterval(checkNewResponse);
                 }
             },
