@@ -4,9 +4,10 @@ let lastPost = document.getElementsByClassName("post has-profile")[currentCount 
 function isLastPage() {
     return document.getElementsByClassName("next").length == 0;
 }
+let interval =20000;
 let title = document.title;
 let url = window.location.href;
-let checkNewResponse = setInterval(function () {
+let checkNewResponse = function () {
     if (isLastPage() && currentCount > 0) {
         $.ajax({
             type: "GET",
@@ -28,7 +29,6 @@ let checkNewResponse = setInterval(function () {
                     setInterval(function(){                                   
                         document.title = (document.title == title ? '\u26B9 ' + title : title);
                     }, 500);
-                    clearInterval(checkNewResponse);
                 }else if(isNewPage){
                     lastPost.insertAdjacentHTML('afterend', 
                         `<h3 style="margin:4px auto;text-align:center;background:#efeed9;padding:5px;border:none;border-radius:7px;">
@@ -39,9 +39,16 @@ let checkNewResponse = setInterval(function () {
                     setInterval(function(){                                   
                         document.title = (document.title == title ? '\u26B9 ' + title : title);
                     }, 500);
-                    clearInterval(checkNewResponse);
                 }
+                else{
+                    setTimeout(checkNewResponse, interval);
+                }
+            },error: function(){
+                interval *= 3;
+                setTimeout(checkNewResponse, interval);
             },
+            timeout:7000
         });
     }
-}, 20000);
+};
+setTimeout(checkNewResponse, interval);
