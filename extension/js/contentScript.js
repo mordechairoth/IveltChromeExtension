@@ -4,8 +4,8 @@ let scripts = [
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
     "js/settingsHandler.js",
-	"js/add_button.js",
-	"js/last_quote.js"
+    "js/add_button.js",
+    "js/last_quote.js"
 
 ];
 
