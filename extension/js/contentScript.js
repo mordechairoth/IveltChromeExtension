@@ -4,7 +4,7 @@ let scripts = [
     "js/addQuoteLastOnlyButton.js",
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
-    "js/settingsHandler.js"
+    "js/sefariaLinker.js"
 ];
 
 scripts.forEach(s => {
