@@ -64,6 +64,9 @@ hr {
     margin: 0 0 24px;
     text-align: right;
 }
+.row.row-indented {
+    padding-right: 30px;
+}
 #notify {
     position: fixed;
     top: 0;
@@ -149,6 +152,11 @@ input[type='checkbox'] + label:before {
 input[type='checkbox']:checked + label:before {
     content: '\f14a';
     color: #3477db;
+}
+select {
+    min-height: 1em;
+    height: 1.3em;
+    padding-inline-start: 20px;
 }
 #notify.fade {
     opacity: 1;
