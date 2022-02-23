@@ -50,8 +50,8 @@
     "js/add_button.js",
     "js/last_quote.js",
     "img/baseline_alternate_email_black_24dp.png",
-    "img/quote_last.png"
-
+    "img/quote_last.png",
+    "img/ivelt_logo.png"
   ],
   "options_ui": {
     "page": "settings.html",
