@@ -50,8 +50,8 @@
     "js/last_quote.js",
     "img/baseline_alternate_email_black_24dp.png",
     "img/quote_last.png",
-    "img/ivelt_logo.png"
-    "js/sefariaLinker.js",
+    "img/ivelt_logo.png",
+    "js/sefariaLinker.js"
 
   ],
   "options_ui": {
