@@ -1,7 +1,7 @@
 (function(){
 
 	if(chrome.storage){
-		chrome.storage.sync.get(['hideUserName', 'warnOnLosingPost'], function(items){
+		chrome.storage.sync.get(['hideUserName', 'warnOnLosingPost',"sefariaLinker",'backgroundSync', 'backgroundSyncPosts'], function(items){
 			if(items.hideUserName){
 				let userName = document.querySelector('.header-avatar .username');
 				if (userName)
@@ -23,6 +23,14 @@
 					window.addEventListener('beforeunload', avoidLosingPost);
 				}
 			}
+            
+            let e = document.createElement('div');
+            e.style.display = "none";
+            e.setAttribute('id', 'iveltHelperSettings');
+            e.setAttribute('data-sefariaLinker',items.sefariaLinker);
+            e.setAttribute('data-backgroundSync',items.backgroundSync);
+            e.setAttribute('data-backgroundSyncPosts',items.backgroundSyncPosts);
+            document.body.appendChild(e);
 		});
 	}
 

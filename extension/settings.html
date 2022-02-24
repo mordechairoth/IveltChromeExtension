@@ -5,7 +5,6 @@
   <title>iVelt Helper | אייוועלט העלפער - Settings</title>
   <link type='text/css' href='css/style.css' rel='stylesheet'>
   <link type='text/css' href='css/fonts.css' rel='stylesheet'>
-  <script type='text/javascript' src='js/settings.js'></script>
   </head>
   <body>
   <div class="mainContent">
@@ -41,6 +40,30 @@
         <input type='checkbox' id='warnOnLosingPost' class='option' />
         <label for='warnOnLosingPost' class='label'>ווייז א ווארענונג פארן פארלירן א נישט געשיקטע תגובה/אשכול</label>
       </div>
+      <div class='row'>
+        <input type='checkbox' id='sefariaLinker' class='option' />
+        <label for='sefariaLinker' class='label'>ספריה לינקר</label>
+      </div>
+      <div class='row'>
+        <input type='checkbox' id='backgroundSync' class='option' />
+        <label for='backgroundSync' class='label'>זוך שטילערהייט פאר פרישע תגובות אדער נאטיפיקאציעס:</label>
+      </div>
+      <div class='row row-indented' dir="rtl">
+        <label for='backgroundSyncPosts' class='label'>זוך פרישע תגובות אין אן אשכול יעדע</label>
+        <select id='backgroundSyncPosts' class='option'>
+          <option value="20000">20 סעקונדעס</option>
+          <option value="60000">מינוט</option>
+          <option value="">זוך נישט</option>
+        </select>
+      </div>
+      <div class='row row-indented' dir="rtl">
+        <label for='backgroundSyncNotif' class='label'>זוך פרישע נאטיפיקאציעס יעדע</label>
+        <select id='backgroundSyncNotif' class='option'>
+          <option value="1">מינוט</option>
+          <option value="5">5 מינוט</option>
+          <option value="">זוך נישט</option>
+        </select>
+      </div>
       <div class='row' dir="rtl">
         <input type='checkbox' id='debugMode' class='option' />
         <label for='debugMode' class='label warning'>דיבאג מאוד</label>
@@ -68,7 +91,7 @@
 
   </div>
 
-  <div id="notify">דיינע אנשטעלונגען זענען אפגעהיטן געווארן</div>
+  <div id="notify"></div>
   <script src="js/settings.js"></script>
   </body>
 </html>

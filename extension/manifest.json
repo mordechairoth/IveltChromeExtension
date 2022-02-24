@@ -43,7 +43,6 @@
   "web_accessible_resources": [
     "js/keyboardShortcuts.js",
     "js/removeNestedQuotes.js",
-
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
     "js/settingsHandler.js",
@@ -52,6 +51,8 @@
     "img/baseline_alternate_email_black_24dp.png",
     "img/quote_last.png",
     "img/ivelt_logo.png"
+    "js/sefariaLinker.js",
+
   ],
   "options_ui": {
     "page": "settings.html",

@@ -1,5 +1,16 @@
 const notificationUrl = "http://www.ivelt.com/forum/ucp.php?i=ucp_notifications";
 
+const defualtPreferences = {
+  hideUserName: false,
+  getBrowserNotifications: false,
+  warnOnLosingPost: true,
+  sefariaLinker: true,
+  debugMode: false,
+  backgroundSync: true,
+  backgroundSyncPosts: 20000,
+  backgroundSyncNotif: 1
+};
+
 let debugQueue = {};
 let debugQueueTimeout;
 const debugLogPrefix = 'debug-';
@@ -25,6 +36,9 @@ let checkNewNotification = function () {
           parseAndSendNotifications(data);
         }
       });
+
+      const debugDate = new Date();
+      debugLog('backgroundSync', `checkNewNotification: newCount(${newCount}), ${debugDate.getUTCMinutes()}:${debugDate.getUTCSeconds()})`);
     });
 };
 
@@ -35,20 +49,13 @@ chrome.alarms.onAlarm.addListener((a) => {
 chrome.runtime.onInstalled.addListener(() => {
   // set default settings to storage
   chrome.storage.sync.get({
-    hideUserName: false,
-    getBrowserNotifications: false,
-    warnOnLosingPost: true,
-    isFreshInstall: true, // needed for initial notifications
-    debugMode: false
+    ...defualtPreferences,
+    isFreshInstall: true // needed for initial notifications
   }, function(items){
     if(items && Object.keys(items).length)
       chrome.storage.sync.set(items);
-  });
 
-  chrome.alarms.get("alarm", (a) => {
-    if (!a) {
-      chrome.alarms.create("alarm", { periodInMinutes: 1 });
-    }
+    alarmToFetch(items.backgroundSync, parseInt(items.backgroundSyncNotif));
   });
 });
 
@@ -70,8 +77,11 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 chrome.storage.onChanged.addListener((changes, area) => {
+  if(area !== 'sync')
+    return;
+
   // clean debug logs when turned off
-  if(area === 'sync' && changes.debugMode && changes.debugMode.newValue === false){
+  if(changes.debugMode && changes.debugMode.newValue === false){
     chrome.storage.sync.get(null, items => {
       Object.keys(items).forEach(key => {
         if(key.indexOf(debugLogPrefix) === 0)
@@ -79,7 +89,23 @@ chrome.storage.onChanged.addListener((changes, area) => {
       })
     })
   }
+
+  if(changes.backgroundSync || changes.backgroundSyncNotif){
+    chrome.storage.sync.get(['backgroundSync', 'backgroundSyncNotif'], items => {
+      alarmToFetch(items.backgroundSync, parseInt(items.backgroundSyncNotif));
+    });
+  }
 });
+
+function alarmToFetch(create, frequency){
+  debugLog('backgroundSync', `alarmToFetch(${create}, ${frequency})`);
+  if(create){
+    chrome.alarms.create("alarm", { periodInMinutes: frequency });
+  }
+  else {
+    chrome.alarms.clear("alarm");
+  }
+}
 
 // will create a storage entry and keep on adding values
 function debugLog(name, valueToPush){

@@ -1,27 +1,43 @@
+const preferencesOptions = [
+	'hideUserName',
+	'getBrowserNotifications',
+	'warnOnLosingPost',
+	'sefariaLinker',
+	'backgroundSync',
+	'backgroundSyncPosts',
+	'backgroundSyncNotif',
+	'debugMode'];
+
 // Listen to settings changes
 function startListeners(){
 
-	// hide user name checkbox
-	document.getElementById('hideUserName').addEventListener('change', (e) => {
-		commitNewSetting({hideUserName: !!e.currentTarget.checked});
-	});
+	preferencesOptions.forEach(prefName => {
+		document.getElementById(prefName).addEventListener('change', (e) => {
+			var newSetting = {};
 
-	// get browser notification checkbox
-	document.getElementById('getBrowserNotifications').addEventListener('change', (e) => {
-		commitNewSetting({getBrowserNotifications: !!e.currentTarget.checked});
-	});
+			if(e.currentTarget.type === 'checkbox')
+				newSetting[prefName] = !!e.currentTarget.checked;
+			else
+				newSetting[prefName] = e.currentTarget.value;
 
-	// get browser notification checkbox
-	document.getElementById('warnOnLosingPost').addEventListener('change', (e) => {
-		commitNewSetting({warnOnLosingPost: !!e.currentTarget.checked});
-	});
-	// debug mode
-	document.getElementById('debugMode').addEventListener('change', (e) => {
-		commitNewSetting({debugMode: !!e.currentTarget.checked});
-		document.querySelector('.js-copy-logs').classList.toggle('hidden', !e.currentTarget.checked);
+			commitNewSetting(newSetting);
+			postSettingChange(newSetting);
+		});
 	});
 
 	document.querySelector('.js-copy-logs').addEventListener('click', copyLogs);
+}
+
+// update fields after a related setting has been changed
+function postSettingChange(items){
+	if(items.hasOwnProperty('backgroundSync')){
+		document.getElementById('backgroundSyncPosts').disabled = !items.backgroundSync;
+		document.getElementById('backgroundSyncNotif').disabled = !items.backgroundSync;
+	}
+
+	if(items.hasOwnProperty('debugMode')){
+		document.querySelector('.js-copy-logs').classList.toggle('hidden', !items.debugMode);
+	}
 }
 
 function copyLogs(){
@@ -32,7 +48,8 @@ function copyLogs(){
 				if(key.indexOf('debug-') === 0)
 					logs.push(key + ' -> ' + items[key]);
 			});
-			navigator.clipboard.writeText(logs.join('\n'));
+			navigator.clipboard.writeText(logs.join('\n'))
+				.then(() => notify('לאגס זענען קאפירט געווארן'));
 		});
 	});
 }
@@ -42,26 +59,37 @@ function commitNewSetting(nameValue){
 
 	chrome.storage.sync.set(nameValue, function() {
 		// Let user know options were saved.
-		const fadeTarget = document.getElementById('notify');
-		fadeTarget.classList.add('fade');
-		setTimeout(function() {
-			fadeTarget.classList.remove('fade');
-		}, 3650);
+		notify();
 	});
+}
+
+function notify(message){
+	const fadeTarget = document.getElementById('notify');
+	fadeTarget.innerHTML = message || 'דיינע אנשטעלונגען זענען אפגעהיטן געווארן';
+	fadeTarget.classList.add('fade');
+	setTimeout(function() {
+		fadeTarget.classList.remove('fade');
+	}, 3650);
 }
 
 function initSettings() {
 
 	// Get all preferences from storage to set fields as needed
 	chrome.storage.sync.get(null, function(items) {
-		document.getElementById('hideUserName').checked = items.hideUserName;
-		document.getElementById('getBrowserNotifications').checked = items.getBrowserNotifications;
-		document.getElementById('warnOnLosingPost').checked = items.warnOnLosingPost;
-		document.getElementById('debugMode').checked = items.debugMode;
-		document.querySelector('.js-copy-logs').classList.toggle('hidden', !items.debugMode);
+
+		preferencesOptions.forEach(prefName => {
+			const element = document.getElementById(prefName);
+
+			if(element.type === 'checkbox')
+				element.checked = items[prefName];
+			else
+				element.value = items[prefName];
+		});
+
+		postSettingChange(items);
 
 		startListeners();
 	});
 }
 
-document.addEventListener('DOMContentLoaded', initSettings, {once: true});
+document.addEventListener('DOMContentLoaded', initSettings);

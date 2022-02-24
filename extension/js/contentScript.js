@@ -6,7 +6,7 @@ let scripts = [
     "js/settingsHandler.js",
     "js/add_button.js",
     "js/last_quote.js"
-
+    "js/sefariaLinker.js"
 ];
 
 
