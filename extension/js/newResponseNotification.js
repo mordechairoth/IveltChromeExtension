@@ -26,7 +26,7 @@
                     let isNewPage = (data.match(/<li class="next">/g) || []).length > 0;
                     if (currentCount < newCount) {
                         lastPost.insertAdjacentHTML('afterend', 
-                            `<h3 style="margin:4px auto;text-align:center;background:#cadceb;padding:7px 5px 5px 5px;border:none;border-radius:7px;">
+                            `<h3 style="margin:4px auto;text-align:center;background:#cadceb;padding:7px 5px 5px 5px;border:none;border-radius:7px;user-select:none;">
                                 נייע תגובות זענען צוגעקומען
                                 <a class="button" style="width:150px;margin:5px auto;display:block;" onclick="window.location.reload();">רילאוד</a>
                             </h3>`)
@@ -40,7 +40,7 @@
                             }, 500);
                     }else if(isNewPage){
                         lastPost.insertAdjacentHTML('afterend', 
-                            `<h3 style="margin:4px auto;text-align:center;background:#efeed9;padding:5px;border:none;border-radius:7px;">
+                            `<h3 style="margin:4px auto;text-align:center;background:#efeed9;padding:5px;border:none;border-radius:7px;user-select:none;">
                                 א נייע בלאט איז צוגעקומען
                                 <a class="button" style="width:150px;margin:6px auto 5px auto;display:block;" ${(data.match(/href=".*" rel="next"/g) || [])[0]}>גיי צום קומענדיגן בלאט</a>
                             </h3>`)
