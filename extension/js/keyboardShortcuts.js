@@ -21,6 +21,9 @@ function sendPost() {
 function previewPost() {
 	document.getElementsByName("preview")[0].click();
 }
+function newPosts(){
+	window.location.href = "./search.php?search_id=newposts";
+}
 
 function checkKey(e) {
 	if (e.key == "Enter" && e.ctrlKey && post) {
@@ -52,6 +55,8 @@ function checkKey(e) {
 		//scrollTop();
 	} else if (e.key == "ArrowDown") {
 		//scrollBottom();
+	} else if (e.key =="PageUp"){
+		newPosts();
 	}
 }
 
