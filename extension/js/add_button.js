@@ -149,7 +149,12 @@ function ping_user(post_id){
     }else{
         let username = getUsername(post_id)
         let text = `[url=${link}][quote="${username}"]\n[/quote][/url]`
-        addText(text)
+	try {
+             addText(text)
+        }
+        catch (exception_var) {
+             navigator.clipboard.writeText(text)
+        }
     }
 }
 
