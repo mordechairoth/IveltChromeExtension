@@ -40,7 +40,6 @@
 		if(textarea && textarea.value){
 			event.preventDefault();
 			return event.returnValue = 'Changes you made may not be saved. Are you sure you want to lose you post?';
-			//return confirm('Are you sure you want to delete user:');
 		}
 	}
 }())

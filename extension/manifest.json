@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "iVelt Helper",
   "description": "Adds accessibility and usability improvements to אייוועלט.",
-  "version": "1.9.8",
+  "version": "1.9.10",
   "icons": {
     "48": "img/icon48.png",
     "128": "img/icon128.png"
@@ -15,8 +15,7 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
-      "css":["css/appcss.css"],
-      "js": ["js/contentScript.js", "js/refreshNotificationCount.js", "js/settingsHandler.js"
+      "js": ["js/contentScript.js","js/refreshNotificationCount.js", "js/settingsHandler.js"]
     }
   ],
   "background": {
@@ -42,17 +41,12 @@
   ],
   "web_accessible_resources": [
     "js/keyboardShortcuts.js",
-    "js/removeNestedQuotes.js",
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
-    "js/settingsHandler.js",
-    "js/add_button.js",
+    "js/sefariaLinker.js",
+	"js/add_button.js",
     "js/last_quote.js",
-    "img/baseline_alternate_email_black_24dp.png",
-    "img/quote_last.png",
-    "img/ivelt_logo.png",
-    "js/sefariaLinker.js"
-
+    "js/settingsHandler.js"
   ],
   "options_ui": {
     "page": "settings.html",
