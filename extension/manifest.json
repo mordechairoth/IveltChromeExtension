@@ -15,6 +15,7 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
+	  "css":["css/appcss.css"],
       "js": ["js/contentScript.js","js/refreshNotificationCount.js", "js/settingsHandler.js"]
     }
   ],
