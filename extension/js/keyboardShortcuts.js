@@ -7,8 +7,6 @@ function nextPage() {
 }
 
 function scrollTop() {
-	console.log('scroll top');
-
 	window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -26,7 +24,7 @@ function previewPost() {
 
 function checkKey(e) {
 	if (e.key == "a" && e.altKey) {
-		window.location.href = 'https://ivelt.com/forum/search.php?search_id=active_topics';
+		window.location.href = 'https://www.ivelt.com/forum/search.php?search_id=active_topics';
 	}
 
 	if (e.key == "Enter" && e.ctrlKey && post) {

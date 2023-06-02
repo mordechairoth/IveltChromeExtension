@@ -71,7 +71,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 chrome.webRequest.onBeforeRequest.addListener(
-  function(details) { return { redirectUrl: 'https://ivelt.com/forum/' }; },
+  function(details) { return { redirectUrl: 'https://www.ivelt.com/forum/' }; },
   {urls: ['*://www.ןהקךא.com/*']},
   ["blocking"]
 );
