@@ -1,5 +1,5 @@
 (function(){
-    let sefariaLinkerSetting = document.getElementById('iveltHelperSettings').getAttribute('data-sefariaLinker') === 'true';
+    let sefariaLinkerSetting = document.getElementById('iveltHelperSettings').getAttribute('data-sefaria-linker') === 'true';
 
     if(sefariaLinkerSetting){
         var linkerScript = document.createElement("script");

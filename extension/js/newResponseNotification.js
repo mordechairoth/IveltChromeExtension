@@ -10,8 +10,8 @@
     let title = document.title;
     // setting was unchecked by the user
 
-    let backgroundSync = document.getElementById('iveltHelperSettings').getAttribute('data-backgroundSync') === 'true';
-    let backgroundSyncPosts = document.getElementById('iveltHelperSettings').getAttribute('data-backgroundSyncPosts');
+    let backgroundSync = document.getElementById('iveltHelperSettings').getAttribute('data-background-sync') === 'true';
+    let backgroundSyncPosts = document.getElementById('iveltHelperSettings').getAttribute('data-background-sync-posts');
     if(!backgroundSync || !backgroundSyncPosts)
         return;
 
