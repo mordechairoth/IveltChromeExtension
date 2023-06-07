@@ -55,7 +55,7 @@ function checkKey(e) {
 	}
 }
 
-document.querySelector(".icon-search-active a").accessKey = "a";
+document.querySelector(".icon.fa-file-o.fa-fw.icon-blue").parentElement.accessKey = "a";
 
 const notificationNode = document.getElementById("notification_list_button");
 

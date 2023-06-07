@@ -170,3 +170,18 @@ select {
     font-size: 0.7em;
     line-height: 1;
 }
+
+.shortcut-key .icon {
+	display: inline-block;
+  	font-family: FontAwesome;
+  	font-weight: normal;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-size: 14px;
+  	line-height: 1;
+  	text-rendering: auto; /* optimizelegibility throws things off #1094 */
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+.shortcut-key .icon:before { padding-right: 2px; }

@@ -1,0 +1,12 @@
+
+
+.clone-first .app-hidden {
+    display: none;
+}
+.clone-first.app-hidden {
+    display: none;
+}
+
+.post-buttons .app-hidden {
+    display: none;
+}

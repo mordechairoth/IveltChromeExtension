@@ -15,6 +15,7 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
+	  "css":["css/appcss.css"],
       "js": ["js/contentScript.js","js/refreshNotificationCount.js", "js/settingsHandler.js"]
     }
   ],
@@ -41,11 +42,10 @@
   ],
   "web_accessible_resources": [
     "js/keyboardShortcuts.js",
-    "js/removeNestedQuotes.js",
-    "js/addQuoteLastOnlyButton.js",
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
-    "js/sefariaLinker.js",
+	"js/add_button.js",
+    "js/last_quote.js",
     "js/settingsHandler.js"
   ],
   "options_ui": {
