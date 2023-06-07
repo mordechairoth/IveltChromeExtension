@@ -3,9 +3,7 @@ let scripts = [
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
 	"js/add_button.js",
-    "js/last_quote.js",
-    "js/sefariaLinker.js"
-	
+    "js/last_quote.js"
 ];
 
 scripts.forEach(s => {

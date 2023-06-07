@@ -1,16 +1,7 @@
 (function(){
 
 	if(chrome.storage){
-		chrome.storage.sync.get(['hideUserName', 'warnOnLosingPost',"sefariaLinker",'backgroundSync', 'backgroundSyncPosts'], function(items){
-			if(items.hideUserName){
-				let userName = document.querySelector('.header-avatar .username');
-				if (userName)
-					userName.innerText = 'הא?';
-				let avatar = document.querySelector('.header-avatar .avatar');
-				if (avatar)
-					avatar.style.display = "none";
-			}
-
+		chrome.storage.sync.get(['warnOnLosingPost','backgroundSync', 'backgroundSyncPosts'], function(items){
 			if(items.warnOnLosingPost){
 				var form = document.querySelector('form[id="qr_postform"]') || document.querySelector('form[id="postform"]');
 
@@ -27,7 +18,6 @@
             let e = document.createElement('div');
             e.style.display = "none";
             e.setAttribute('id', 'iveltHelperSettings');
-            e.setAttribute('data-sefariaLinker',items.sefariaLinker);
             e.setAttribute('data-backgroundSync',items.backgroundSync);
             e.setAttribute('data-backgroundSyncPosts',items.backgroundSyncPosts);
             document.body.appendChild(e);
