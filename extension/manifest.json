@@ -44,7 +44,6 @@
     "js/keyboardShortcuts.js",
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
-    "js/sefariaLinker.js",
 	"js/add_button.js",
     "js/last_quote.js",
     "js/settingsHandler.js"
