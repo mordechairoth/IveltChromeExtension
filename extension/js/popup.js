@@ -54,7 +54,7 @@ function emergency_sign_out(){
 }
 
 function open_settings(){
-  chrome.tabs.create({url:chrome.extension.getURL('settings.html')});
+  chrome.tabs.create({url:chrome.runtime.getURL('settings.html')});
   window.close();
 }
 

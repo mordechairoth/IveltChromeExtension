@@ -1,6 +1,6 @@
 {
   "update_url": "https://clients2.google.com/service/update2/crx",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "iVelt Helper",
   "description": "Adds accessibility and usability improvements to אייוועלט.",
   "version": "1.9.10",
@@ -8,6 +8,13 @@
     "48": "img/icon48.png",
     "128": "img/icon128.png"
   },
+  "action": {
+    "default_icon": {
+      "48": "img/icon48.png",
+      "128": "img/icon128.png"
+    },
+    "default_popup": "popup.html"
+ },
   "content_scripts": [
     {
       "matches": [
@@ -21,9 +28,6 @@
   "background": {
     "service_worker": "background.js"
   },
-   "browser_action": {
-    "default_popup": "popup.html"
-  },
   "options_page": "settings.html",
   "permissions": [
     "tabs",
@@ -33,24 +37,41 @@
     "notifications",
     "webRequest",
     "background",
-    "webRequestBlocking",
+    "declarativeNetRequestWithHostAccess",
+    "declarativeNetRequestFeedback"
+    ],
+  "host_permissions": [
     "*://*.ivelt.com/*",
     "*://*.198.153.76.147/*",
     "*://*.yiddishworld.com/*",
     "*://www.xn--4dbhss5b.com/*"
   ],
-  "web_accessible_resources": [
-    "js/keyboardShortcuts.js",
-    "js/removeNestedQuotes.js",
-    "js/addQuoteLastOnlyButton.js",
-    "js/newResponseNotification.js",
-    "js/addGoogleSearch.js",
-    "js/sefariaLinker.js",
-    "js/settingsHandler.js"
-  ],
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "ruleset_1",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  },
+  "web_accessible_resources": [{
+    "resources": [
+      "js/keyboardShortcuts.js",
+      "js/removeNestedQuotes.js",
+      "js/addQuoteLastOnlyButton.js",
+      "js/newResponseNotification.js",
+      "js/addGoogleSearch.js",
+      "js/sefariaLinker.js",
+      "js/settingsHandler.js"
+    ],
+    "matches": [
+      "*://*.ivelt.com/*",
+      "*://*.yiddishworld.com/*",
+      "*://*.198.153.76.147/*"
+    ],    
+    "extension_ids": []
+   }],
   "options_ui": {
     "page": "settings.html",
-    "open_in_tab": true,
-    "chrome_style": true
+    "open_in_tab": true
   }
 }
