@@ -12,8 +12,8 @@ function hasNestedQuotes(text) {
 
 function removeNestedQuotes(text) {
 	let nestedQuote = text.substring(
-		text.lastIndexOf('[quote="'),
-		text.indexOf("[/quote]", text.lastIndexOf('[quote="')) + 8
+		text.lastIndexOf('[quote='),
+		text.indexOf("[/quote]", text.lastIndexOf('[quote=')) + 8
 	);
 	let modifiedText = text.replace(nestedQuote, "");
 
