@@ -1,18 +1,38 @@
 window.onload = function () {
     // Check if we are on the correct page
-    if (window.location.href === 'https://ivelt.com/forum/' || window.location.href === 'https://ivelt.com/forum/index.php') {
+    if (
+        window.location.href === 'https://ivelt.com/forum/' ||
+        window.location.href.startsWith('https://ivelt.com/forum/index.php') ||
+        window.location.href === 'https://www.ivelt.com/forum/' ||
+        window.location.href.startsWith('https://www.ivelt.com/forum/index.php')
+    ) {
+    
         // Create a button
         var btn = document.createElement("button");
         btn.id = "advanced-search";
         btn.innerHTML = "וועלט אויס וואס צו זוכן";
-        btn.style.position = "fixed";
-        btn.style.top = "10px";
-        btn.style.right = "10px";
+        btn.style.position = "relative";
         btn.style.borderRadius = "50%";
-        document.body.appendChild(btn);
+        
+
+        // Create a spacer
+        var spacer = document.createElement("span");
+        spacer.style.display = "inline-block";
+        spacer.style.width = "10px";
+
+        // Get the element with itemprop of 'name'
+        var nameElement = document.querySelector('span[itemprop="name"]');
+
+        // Insert the spacer and the button after the parent of nameElement
+        nameElement.parentNode.insertAdjacentElement('afterend', spacer);
+        spacer.insertAdjacentElement('afterend', btn);
+
+
+
 
         // Event listener for button
         document.getElementById("advanced-search").addEventListener("click", function () {
+            this.disabled = true;
             var links = document.querySelectorAll('a[href^="./viewforum.php"]');
             links.forEach(function (link) {
                 var forumId = link.href.split('=')[1].split('&')[0];
@@ -117,6 +137,40 @@ window.onload = function () {
                 window.open(finalURL, "_blank");
             });
             
+            // Create "Cancel" button
+            var cancelButton = document.createElement("button");
+            cancelButton.id = "cancel";
+            cancelButton.innerHTML = "צו צוריק";
+            document.getElementById("popup-box").appendChild(cancelButton);
+
+            // Add event listener to the "Cancel" button
+            document.getElementById("cancel").addEventListener("click", function () {
+                // Remove the entire popup box
+                document.body.removeChild(popupBox);
+                    // Remove the checkboxes
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.parentNode.removeChild(checkbox);
+                });
+                // Re-enable the "advanced-search" button
+                document.getElementById("advanced-search").disabled = false;
+            });
+
+            document.querySelectorAll("#popup-box button").forEach(function(button) {
+                button.style.cssText = `
+                    margin: 5px;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    background-color: #008CBA; /* Blue background */
+                    color: white; /* White text */
+                    border: none; /* Remove border */
+                    border-radius: 4px; /* Rounded corners */
+                    text-align: center; /* Centered text */
+                    transition-duration: 0.4s; /* Transition */
+                `;
+            });
+            
+
 
             // Make the popup box draggable
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
