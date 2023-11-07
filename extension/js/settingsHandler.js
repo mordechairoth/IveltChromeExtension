@@ -1,7 +1,7 @@
 (function(){
 
 	if(chrome.storage){
-		chrome.storage.sync.get(['hideUserName', 'warnOnLosingPost',"sefariaLinker",'backgroundSync', 'backgroundSyncPosts'], function(items){
+		chrome.storage.local.get(['hideUserName', 'warnOnLosingPost',"sefariaLinker",'backgroundSync', 'backgroundSyncPosts'], function(items){
 			if(items.hideUserName){
 				let userName = document.querySelector('.header-avatar .username');
 				if (userName)
