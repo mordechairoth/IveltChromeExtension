@@ -25,9 +25,9 @@ let checkNewNotification = function () {
       let newCount = matches.length == 2 ? matches[1] : "0";
 
       if (newCount !== "0") {
-        chrome.browserAction.setBadgeText({ text: newCount });
+        chrome.action.setBadgeText({ text: newCount });
       } else {
-        chrome.browserAction.setBadgeText({ text: "" });
+        chrome.action.setBadgeText({ text: "" });
       }
 
       // triggere browser notifications
@@ -61,7 +61,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if(request.type === 'badgeText'){
-    chrome.browserAction.setBadgeText({ text: request.text });
+    chrome.action.setBadgeText({ text: request.text });
   }
 
   // global method to send a notification
@@ -69,12 +69,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     queueNotification(request);
   }
 });
-
-chrome.webRequest.onBeforeRequest.addListener(
-  function(details) { return { redirectUrl: 'https://ivelt.com/forum/' }; },
-  {urls: ['*://www.ןהקךא.com/*']},
-  ["blocking"]
-);
 
 chrome.storage.onChanged.addListener((changes, area) => {
   if(area !== 'sync')

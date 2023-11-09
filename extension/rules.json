@@ -1,0 +1,8 @@
+[
+    {
+      "id": 1,
+      "priority": 1,
+      "action": { "type": "redirect", "redirect": { "url": "https://www.ivelt.com/forum/" } },
+      "condition": {"urlFilter": "*://www.xn--4dbhss5b.com/*", "resourceTypes": ["main_frame"] }
+    }
+]

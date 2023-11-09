@@ -27,9 +27,9 @@
             let e = document.createElement('div');
             e.style.display = "none";
             e.setAttribute('id', 'iveltHelperSettings');
-            e.setAttribute('data-sefariaLinker',items.sefariaLinker);
-            e.setAttribute('data-backgroundSync',items.backgroundSync);
-            e.setAttribute('data-backgroundSyncPosts',items.backgroundSyncPosts);
+            e.setAttribute('data-sefaria-linker',items.sefariaLinker);
+            e.setAttribute('data-background-sync',items.backgroundSync);
+            e.setAttribute('data-background-sync-posts',items.backgroundSyncPosts);
             document.body.appendChild(e);
 		});
 	}

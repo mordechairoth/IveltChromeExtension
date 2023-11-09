@@ -9,7 +9,7 @@ let scripts = [
 
 scripts.forEach(s => {
     let e = document.createElement('script');
-    e.src = chrome.extension.getURL(s);
+    e.src = chrome.runtime.getURL(s);
     (document.head || document.documentElement).appendChild(e);
     e.onload = function () {
         e.parentNode.removeChild(e);

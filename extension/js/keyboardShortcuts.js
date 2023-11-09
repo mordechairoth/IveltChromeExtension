@@ -7,11 +7,11 @@ function nextPage() {
 }
 
 function scrollTop() {
-	window.scrollTo(0, 0);
+	window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function scrollBottom() {
-	window.scrollTo(0, document.body.scrollHeight);
+	window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' } );
 }
 
 function sendPost() {
@@ -23,6 +23,10 @@ function previewPost() {
 }
 
 function checkKey(e) {
+	if (e.key == "a" && e.altKey) {
+		window.location.href = 'https://www.ivelt.com/forum/search.php?search_id=active_topics';
+	}
+
 	if (e.key == "Enter" && e.ctrlKey && post) {
 		sendPost();
 	}
@@ -49,13 +53,13 @@ function checkKey(e) {
 			console.log("attempted to go before first page");
 		}
 	} else if (e.key == "ArrowUp") {
-		//scrollTop();
+		scrollTop();
 	} else if (e.key == "ArrowDown") {
-		//scrollBottom();
+		scrollBottom();
 	}
 }
 
-document.querySelector(".icon-search-active a").accessKey = "a";
+
 
 const notificationNode = document.getElementById("notification_list_button");
 
