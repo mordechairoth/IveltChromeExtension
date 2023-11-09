@@ -41,9 +41,9 @@ function postSettingChange(items){
 }
 
 function copyLogs(){
-	chrome.storage.sync.get(null, items => {
-		chrome.storage.sync.getBytesInUse(inUse => {
-			let logs = [navigator.userAgent, `Bytes in use: ${inUse}, QUOTA_BYTES: ${chrome.storage.sync.QUOTA_BYTES}, QUOTA_BYTES_PER_ITEM: ${chrome.storage.sync.QUOTA_BYTES_PER_ITEM}`];
+	chrome.storage.local.get(null, items => {
+		chrome.storage.local.getBytesInUse(inUse => {
+			let logs = [navigator.userAgent, `Bytes in use: ${inUse}, QUOTA_BYTES: ${chrome.storage.local.QUOTA_BYTES}, QUOTA_BYTES_PER_ITEM: ${chrome.storage.local.QUOTA_BYTES_PER_ITEM}`];
 			Object.keys(items).forEach(key => {
 				if(key.indexOf('debug-') === 0)
 					logs.push(key + ' -> ' + items[key]);
@@ -54,10 +54,12 @@ function copyLogs(){
 	});
 }
 
+
+
 // Saves settings to chrome.storage
 function commitNewSetting(nameValue){
 
-	chrome.storage.sync.set(nameValue, function() {
+	chrome.storage.local.set(nameValue, function() {
 		// Let user know options were saved.
 		notify();
 	});
@@ -75,7 +77,7 @@ function notify(message){
 function initSettings() {
 
 	// Get all preferences from storage to set fields as needed
-	chrome.storage.sync.get(null, function(items) {
+	chrome.storage.local.get(null, function(items) {
 
 		preferencesOptions.forEach(prefName => {
 			const element = document.getElementById(prefName);

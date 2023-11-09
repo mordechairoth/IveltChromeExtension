@@ -31,7 +31,7 @@ let checkNewNotification = function () {
       }
 
       // triggere browser notifications
-      chrome.storage.sync.get(['getBrowserNotifications'], function(items){
+      chrome.storage.local.get(['getBrowserNotifications'], function(items){
         if(items.getBrowserNotifications){
           parseAndSendNotifications(data);
         }
@@ -47,13 +47,25 @@ chrome.alarms.onAlarm.addListener((a) => {
 });
 
 chrome.runtime.onInstalled.addListener(() => {
+
+  // migrate settings from sync storage to local storage
+  chrome.storage.sync.get(null, function(items){
+    if(Object.keys(items).length > 0){
+      Object.keys(items).forEach(key => {
+        chrome.storage.local.set({[key]: items[key]});
+        chrome.storage.sync.remove(key);
+        console.log(`migrated ${key}`);
+      });
+    }
+  });
+  
   // set default settings to storage
-  chrome.storage.sync.get({
+  chrome.storage.local.get({
     ...defualtPreferences,
     isFreshInstall: true // needed for initial notifications
   }, function(items){
     if(items && Object.keys(items).length)
-      chrome.storage.sync.set(items);
+      chrome.storage.local.set(items);
 
     alarmToFetch(items.backgroundSync, parseInt(items.backgroundSyncNotif));
   });
@@ -76,16 +88,16 @@ chrome.storage.onChanged.addListener((changes, area) => {
 
   // clean debug logs when turned off
   if(changes.debugMode && changes.debugMode.newValue === false){
-    chrome.storage.sync.get(null, items => {
+    chrome.storage.local.get(null, items => {
       Object.keys(items).forEach(key => {
         if(key.indexOf(debugLogPrefix) === 0)
-          chrome.storage.sync.remove(key);
+          chrome.storage.local.remove(key);
       })
     })
   }
 
   if(changes.backgroundSync || changes.backgroundSyncNotif){
-    chrome.storage.sync.get(['backgroundSync', 'backgroundSyncNotif'], items => {
+    chrome.storage.local.get(['backgroundSync', 'backgroundSyncNotif'], items => {
       alarmToFetch(items.backgroundSync, parseInt(items.backgroundSyncNotif));
     });
   }
@@ -109,7 +121,7 @@ function debugLog(name, valueToPush){
     clearTimeout(debugQueueTimeout);
 
   debugQueueTimeout = setTimeout(() => {
-    chrome.storage.sync.get('debugMode', items => {
+    chrome.storage.local.get('debugMode', items => {
       if(items.debugMode){
         // log all from the queue
         Object.keys(debugQueue).forEach(key => {
@@ -123,11 +135,11 @@ function debugLog(name, valueToPush){
 
 function commitDebugLog(name, values){
   name = debugLogPrefix + name;
-  chrome.storage.sync.get(name, ({[name]: item}) => {
+  chrome.storage.local.get(name, ({[name]: item}) => {
     if(item)
-      chrome.storage.sync.set({[name]: item.concat(values)});
+      chrome.storage.local.set({[name]: item.concat(values)});
     else
-      chrome.storage.sync.set({[name]: values});
+      chrome.storage.local.set({[name]: values});
   })
 }
 
