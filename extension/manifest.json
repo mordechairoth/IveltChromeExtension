@@ -62,7 +62,7 @@
       "js/addGoogleSearch.js",
       "js/sefariaLinker.js",
       "js/settingsHandler.js",
-      "js/advancedsearch.js"
+      "js/advancedSearch.js"
     ],
     "matches": [
       "*://*.ivelt.com/*",
