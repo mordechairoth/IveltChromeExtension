@@ -5,7 +5,7 @@ let scripts = [
     "js/newResponseNotification.js",
     "js/addGoogleSearch.js",
     "js/sefariaLinker.js",
-    "js/js/advancedsearch.js"
+    "js/advancedsearch.js"
 ];
 
 scripts.forEach(s => {
