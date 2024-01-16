@@ -1,5 +1,7 @@
 (function () {
-  let currentCount = document
+    if (window.location.pathname !== '/forum/viewtopic.php') return ;
+
+    let currentCount = document
     .querySelector("div.pagination")
     .innerHTML.match(/(\d.) תגובות/)[1];
   let currentPostCount =
