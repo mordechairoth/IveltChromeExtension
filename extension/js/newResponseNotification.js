@@ -3,7 +3,7 @@
 
     let currentCount = document
     .querySelector("div.pagination")
-    .innerHTML.match(/(\d.) תגובות/)[1];
+    .innerHTML.match(/(\d+) תגובות/)[1];
   let currentPostCount =
     document.getElementsByClassName("post has-profile").length;
   let lastPost =
