@@ -22,7 +22,7 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
-      "js": ["js/contentScript.js","js/refreshNotificationCount.js", "js/settingsHandler.js"]
+      "js": ["js/settingsHandler.js", "js/contentScript.js","js/refreshNotificationCount.js"]
     }
   ],
   "background": {
