@@ -61,7 +61,8 @@
       "js/newResponseNotification.js",
       "js/addGoogleSearch.js",
       "js/sefariaLinker.js",
-      "js/settingsHandler.js"
+      "js/settingsHandler.js",
+      "js/advancedSearch.js"
     ],
     "matches": [
       "*://*.ivelt.com/*",
