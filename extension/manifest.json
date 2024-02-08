@@ -14,7 +14,7 @@
       "128": "img/icon128.png"
     },
     "default_popup": "popup.html"
- },
+  },
   "content_scripts": [
     {
       "matches": [
@@ -22,7 +22,11 @@
         "*://*.yiddishworld.com/*",
         "*://*.198.153.76.147/*"
       ],
-      "js": ["js/settingsHandler.js", "js/contentScript.js","js/refreshNotificationCount.js"]
+      "js": [
+        "js/settingsHandler.js",
+        "js/contentScript.js",
+        "js/refreshNotificationCount.js"
+      ]
     }
   ],
   "background": {
@@ -39,7 +43,7 @@
     "background",
     "declarativeNetRequestWithHostAccess",
     "declarativeNetRequestFeedback"
-    ],
+  ],
   "host_permissions": [
     "*://*.ivelt.com/*",
     "*://*.198.153.76.147/*",
@@ -47,29 +51,34 @@
     "*://www.xn--4dbhss5b.com/*"
   ],
   "declarative_net_request": {
-    "rule_resources": [{
-      "id": "ruleset_1",
-      "enabled": true,
-      "path": "rules.json"
-    }]
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
   },
-  "web_accessible_resources": [{
-    "resources": [
-      "js/keyboardShortcuts.js",
-      "js/removeNestedQuotes.js",
-      "js/addQuoteLastOnlyButton.js",
-      "js/newResponseNotification.js",
-      "js/addGoogleSearch.js",
-      "js/sefariaLinker.js",
-      "js/settingsHandler.js"
-    ],
-    "matches": [
-      "*://*.ivelt.com/*",
-      "*://*.yiddishworld.com/*",
-      "*://*.198.153.76.147/*"
-    ],    
-    "extension_ids": []
-   }],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "js/keyboardShortcuts.js",
+        "js/removeNestedQuotes.js",
+        "js/addQuoteLastOnlyButton.js",
+        "js/newResponseNotification.js",
+        "js/addGoogleSearch.js",
+        "js/pageEnhancements.js",
+        "js/sefariaLinker.js",
+        "js/settingsHandler.js"
+      ],
+      "matches": [
+        "*://*.ivelt.com/*",
+        "*://*.yiddishworld.com/*",
+        "*://*.198.153.76.147/*"
+      ],
+      "extension_ids": []
+    }
+  ],
   "options_ui": {
     "page": "settings.html",
     "open_in_tab": true
