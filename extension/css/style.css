@@ -87,7 +87,6 @@ hr {
 }
 .mainContent {
     width: 750px;
-    margin: 50px auto;
     display: grid;
     grid-template-columns: 500px auto;
     grid-column-gap: 40px;

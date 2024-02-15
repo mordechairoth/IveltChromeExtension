@@ -25,3 +25,15 @@
     margin: 50px auto;
 
   }
+  body{
+    background-color: #F5F7FA
+  }
+  .wrap{
+    background-color: #fff;
+
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 12px;
+    width: 780px;
+    padding: 15px;
+  }
