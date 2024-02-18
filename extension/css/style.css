@@ -19,6 +19,7 @@ body {
     line-height: 1.5em;
     background: #fafafa;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji','Segoe UI Symbol';
+    direction: rtl;
 }
 strong {
     font-weight: 600;
@@ -86,9 +87,8 @@ hr {
 }
 .mainContent {
     width: 750px;
-    margin: 50px auto;
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 500px auto;
     grid-column-gap: 40px;
     grid-template-areas:
     'h h'
@@ -100,7 +100,7 @@ hr {
     font-size: 20px;
 }
 .credits {
-    grid-area: n;
+    grid-area: m;
     border-right: 1px solid #ddd;
     padding-right: 15px;
     align-self: start;
@@ -111,7 +111,7 @@ hr {
     list-style-type: none;
 }
 .content {
-    grid-area: m;
+    grid-area: n;
     font-size: 16px;
 }
 .content h2 {

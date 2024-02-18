@@ -1,0 +1,39 @@
+.header {
+    background-color: #12A3EB;
+    background-image: linear-gradient(to bottom, #6ACEFF 0%, #0076B1 2px, #12A3EB 92px, #12A3EB 100%);
+    background-repeat: repeat-x;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  #logo {
+    float: right;
+    padding: 7px 15px;
+  }
+
+
+  .aaa {
+    border-top: 15px solid #0A8ED0;
+    border-bottom: 3px solid #0A8ED0;
+    border-right: 1px solid #0A8ED0;
+    border-left: 1px solid #0A8ED0;
+    border-radius: 7px;
+    padding: 15px;
+    width: 750px;
+    margin: 50px auto;
+
+  }
+  body{
+    background-color: #F5F7FA
+  }
+  .wrap{
+    background-color: #fff;
+
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 12px;
+    width: 780px;
+    padding: 15px;
+  }
